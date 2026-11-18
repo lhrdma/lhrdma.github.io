@@ -1,11 +1,11 @@
 /* Inner pages share the homepage's colors, chapter headings and reading grid. */
 .hero .hero-inner { padding-block: 30px 26px; }
-.hero .network svg { height: 205px; }
+.hero .network svg { height: 250px; }
 .hero .hero-actions { margin-top: 20px; }
 .milestone--completed { border-top-color: #24856b; }
 .milestone--completed::before { background: #24856b; }
 .milestone--completed h3 { color: #176c55; }
-.milestone--current { border-top: 2px solid #2267ab; background: #edf4fc; padding-left: 15px; }
+.milestone--current { border-top: 2px solid #2267ab; }
 .milestone--current::before { width: 10px; height: 10px; top: -6px; background: #2267ab; box-shadow: 0 0 0 4px #dceaf8; }
 .milestone--current h3, .milestone--current time { color: #18558f; }
 .milestone--current h3 { font-weight: 700; }
@@ -115,7 +115,7 @@
 }
 @media (max-width: 700px) {
   .hero .hero-inner { padding-block: 24px 20px; gap: 20px; }
-  .hero .network svg { height: 170px; }
+  .hero .network svg { height: 200px; }
   .page-intro { padding: 28px 0 25px; }
   .page-intro h1 { font-size: 29px; }
   .page-intro p { font-size: 13px; }
