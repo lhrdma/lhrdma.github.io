@@ -40,7 +40,7 @@ def document(content, active, scripts=''):
     return f'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{escape(subtitle)}"><title>{active} · {title}</title><link rel="icon" href="assets/NSFC.png"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="pages.css"><script src="main.js" defer></script>{scripts}</head><body>{header(active)}{content}{footer}</body></html>'
 
 network = '''<div class="network"><svg viewBox="0 0 450 275" role="img" aria-labelledby="network-title"><title id="network-title">广域 RDMA 传输研究示意图</title><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#d5e0e9"/></pattern></defs><rect width="450" height="275" fill="url(#dots)"/><g stroke="#b0c4d6" stroke-width="1.3" fill="none"><path d="M65 142 165 60 285 76 392 147 275 226 165 214Z M65 142 165 214 285 76 M165 60 275 226 392 147 M65 142H392"/><path d="M165 60V214 M285 76 275 226" stroke-dasharray="4 5"/></g><path d="M65 142 165 60 285 76 392 147" stroke="#087e91" stroke-width="2.5" fill="none"/><g fill="white" stroke="#163b65" stroke-width="2"><circle cx="65" cy="142" r="11"/><circle cx="165" cy="60" r="9"/><circle cx="285" cy="76" r="11"/><circle cx="392" cy="147" r="11"/><circle cx="275" cy="226" r="9"/><circle cx="165" cy="214" r="8"/></g><g fill="#087e91"><circle cx="65" cy="142" r="4"/><circle cx="165" cy="60" r="3"/><circle cx="285" cy="76" r="4"/><circle cx="392" cy="147" r="4"/></g><g font-family="Microsoft YaHei, sans-serif" font-size="11" fill="#45617a"><text x="35" y="177">发送端</text><text x="138" y="35">协同控制</text><text x="258" y="50">拥塞感知</text><text x="371" y="182">接收端</text></g><rect x="163" y="122" width="127" height="37" fill="#f5f8fb" stroke="#b8cbdc"/><text x="226" y="146" fill="#163b65" text-anchor="middle" font-family="Georgia, serif" font-size="17" letter-spacing="3">WIDE-AREA</text></svg><div class="network-caption"><span>广域 RDMA 传输研究</span><span>RESEARCH OVERVIEW</span></div></div>'''
-hero = f'''<section class="hero"><div class="wrap hero-inner"><div class="hero-copy"><div class="eyebrow">国家重点研发计划 · 青年科学家项目</div><h1><span>拥塞感知的广域 RDMA</span><span>传输控制技术研究</span></h1><p>{subtitle}</p><div class="hero-actions"><a class="primary" href="#background">了解项目 <span aria-hidden="true">↗</span></a><a class="text-link" href="news.html">最新新闻 <span aria-hidden="true">→</span></a></div></div>{network}</div><div class="wrap hero-meta"><span>牵头单位 / 北京邮电大学</span><span>参与单位 / 香港中文大学（深圳）</span><span>山东省计算中心（国家超级计算济南中心）</span></div></section>'''
+hero = f'''<section class="hero"><div class="wrap hero-inner"><div class="hero-copy"><div class="eyebrow">国家重点研发计划 · 青年科学家项目</div><h1><span>拥塞感知的广域 RDMA</span><span>传输控制技术研究</span></h1><div class="hero-actions"><a class="primary" href="#background">了解项目 <span aria-hidden="true">↗</span></a><a class="text-link" href="news.html">最新新闻 <span aria-hidden="true">→</span></a></div></div>{network}</div><div class="wrap hero-meta"><span>牵头单位 / 北京邮电大学</span><span>参与单位 / 香港中文大学（深圳）</span><span>山东省计算中心（国家超级计算济南中心）</span></div></section>'''
 ids = ['background', 'objectives', 'approach', 'outcomes']
 english = ['BACKGROUND', 'OBJECTIVES', 'APPROACH', 'EXPECTED OUTCOMES']
 headings = soup.select('#info .content-block')[0].find_all('h4')
@@ -55,11 +55,19 @@ for i, h in enumerate(headings):
         width, height = (4202, 999) if i == 2 else (3886, 1792)
         sections += f'<figure class="figure"><a href="assets/{name}" target="_blank" rel="noopener" aria-label="查看{caption}原图"><img loading="lazy" src="assets/{name}" width="{width}" height="{height}" alt="{caption}"></a><figcaption>{caption} <span>· 点击查看原图</span></figcaption></figure>'
     sections += '</section>'
-sidebar += '<a href="#milestones"><span>05</span>项目时间轴线</a><a class="news-entry" href="news.html">最新新闻 <span aria-hidden="true">↗</span></a></aside>'
+sidebar += '<a href="#milestones"><span>05</span>项目时间轴线</a></aside>'
 sections += '<section class="article-section" id="milestones"><div class="section-heading"><span class="number">05</span><h2>项目时间轴线</h2><small>MILESTONES</small></div><div class="timeline">'
-for item in soup.select('.timeline-item'):
-    sections += f'<article class="milestone"><time>{item.select_one(".timeline-date").get_text(strip=True)}</time><h3>{item.h4.get_text(strip=True)}</h3></article>'
-sections += '</div></section><div class="news-banner"><div><strong>最新新闻</strong><p>项目进展与学术交流</p></div><a href="news.html">查看最新新闻 <span aria-hidden="true">→</span></a></div>'
+# Preview status follows the supplied schedule: after the midterm checkpoint and
+# before the December 2026 annual check. Dates alone do not verify actual completion.
+current_phase = 3
+for i, item in enumerate(soup.select('.timeline-item')):
+    status = 'completed' if i < current_phase else 'current' if i == current_phase else 'upcoming'
+    accessible_status = {'completed': '已完成', 'current': '正处于', 'upcoming': '未完成'}[status]
+    date = item.select_one('.timeline-date').get_text(strip=True)
+    label = item.h4.get_text(strip=True)
+    current = ' aria-current="step"' if status == 'current' else ''
+    sections += f'<article class="milestone milestone--{status}" aria-label="{date}，{label}，{accessible_status}"{current}><time>{date}</time><h3>{label}</h3></article>'
+sections += '</div></section>'
 (root / 'index.html').write_text(document(f'<main id="main">{hero}<div class="wrap page-body">{sidebar}<div>{sections}</div></div></main>', '项目概况'), encoding='utf-8')
 
 news = '<main class="wrap news-page" id="main"><div class="eyebrow">NEWS &amp; UPDATES</div><h1>最新新闻</h1>'

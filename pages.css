@@ -1,4 +1,17 @@
 /* Inner pages share the homepage's colors, chapter headings and reading grid. */
+.hero .hero-inner { padding-block: 30px 26px; }
+.hero .network svg { height: 205px; }
+.hero .hero-actions { margin-top: 20px; }
+.milestone--completed { border-top-color: #24856b; }
+.milestone--completed::before { background: #24856b; }
+.milestone--completed h3 { color: #176c55; }
+.milestone--current { border-top: 2px solid #2267ab; background: #edf4fc; padding-left: 15px; }
+.milestone--current::before { width: 10px; height: 10px; top: -6px; background: #2267ab; box-shadow: 0 0 0 4px #dceaf8; }
+.milestone--current h3, .milestone--current time { color: #18558f; }
+.milestone--current h3 { font-weight: 700; }
+.milestone--upcoming { border-top: 1px dashed #a7b0bb; }
+.milestone--upcoming::before { background: white; border: 2px solid #8b96a3; }
+.milestone--upcoming h3, .milestone--upcoming time { color: #6a7786; }
 .page-intro {
   padding: 42px 0 34px;
   background: var(--paper);
@@ -9,10 +22,10 @@
 .page-articles { min-width: 0; }
 .page-articles h3 { color: var(--navy); font-size: 18px; font-weight: 600; line-height: 1.75; }
 .page-articles h4 { color: var(--navy); font-size: 18px; font-weight: 600; line-height: 1.75; }
-.team-unit-label { margin: 30px 0 18px; font-size: 14px !important; color: var(--accent) !important; }
+.team-unit-label { margin: 30px 0 18px; font-size: 20px !important; color: var(--accent) !important; }
 .team-participant { border-top: 1px solid var(--line); padding: 24px 0 28px; }
-.team-participant-logo { width: 70px; height: 70px; object-fit: contain; float: left; margin: 0 18px 12px 0; }
-.team-participant h4 { margin: 0 0 18px; min-height: 70px; display: flex; align-items: center; }
+.team-participant-logo { display: block; width: min(410px, 100%); height: 100px; object-fit: contain; object-position: left center; margin: 0 0 20px; }
+.team-participant h4 { margin: 0 0 18px; display: flex; align-items: center; }
 .team-participant p { clear: both; margin-bottom: 14px; font-size: 15px; }
 .team-participant p:last-child { margin-bottom: 0; }
 .team-leader { display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 27px; }
@@ -101,13 +114,16 @@
   .proto-top5-spark { width: 50px; }
 }
 @media (max-width: 700px) {
+  .hero .hero-inner { padding-block: 24px 20px; gap: 20px; }
+  .hero .network svg { height: 170px; }
   .page-intro { padding: 28px 0 25px; }
   .page-intro h1 { font-size: 29px; }
   .page-intro p { font-size: 13px; }
   .team-leader { display: block; }
   .team-leader-photo { width: 90px; height: 116px; margin-bottom: 16px; }
-  .team-participant-logo { width: 54px; height: 54px; }
-  .team-participant h4 { min-height: 54px; font-size: 16px; }
+  .team-unit-label { font-size: 19px !important; }
+  .team-participant-logo { height: 80px; }
+  .team-participant h4 { font-size: 17px; }
   .team-leader h4 { min-height: 0; }
   .team-student-list { grid-template-columns: repeat(2, 1fr); }
   .references li { gap: 10px; padding-block: 16px; }
