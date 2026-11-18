@@ -2,6 +2,7 @@
 .hero .hero-inner { padding-block: 30px 26px; }
 .hero .network svg { height: 250px; }
 .hero .hero-actions { margin-top: 20px; }
+.figure figcaption { text-align: center; }
 .milestone--completed { border-top-color: #24856b; }
 .milestone--completed::before { background: #24856b; }
 .milestone--completed h3 { color: #176c55; }
@@ -48,6 +49,8 @@
 .reference-text a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 .reference-meta { color: var(--muted); }
 .news-archive { padding-block: 38px 75px; }
+.news-archive .news-item { grid-template-columns: 130px 1fr 170px; }
+.news-archive .news-item time { font-size: 18px; font-weight: 500; white-space: nowrap; }
 .news-archive .news-item:first-child { border-top: 0; }
 .news-archive .news-item h2 { color: var(--ink); }
 .prototype-note { font-size: 12px; color: var(--muted) !important; padding: 0 0 20px; }
@@ -130,6 +133,8 @@
   .reference-text { font-size: 16px; }
   .reference-number { flex-basis: 27px; font-size: 14px; }
   .news-archive { padding-block: 15px 45px; }
+  .news-archive .news-item { grid-template-columns: 95px 1fr; }
+  .news-archive .news-item time { font-size: 16px; }
   .proto-dashboard { grid-template-columns: 1fr; }
   .proto-center { grid-column: 1; }
   .proto-map-wrap { padding: 12px; }

@@ -53,7 +53,7 @@ for i, h in enumerate(headings):
     if i in (2, 3):
         name, caption = ('arch.png', '图 01 / 项目技术架构') if i == 2 else ('topo.png', '图 02 / 网络拓扑与应用验证')
         width, height = (4202, 999) if i == 2 else (3886, 1792)
-        sections += f'<figure class="figure"><a href="assets/{name}" target="_blank" rel="noopener" aria-label="查看{caption}原图"><img loading="lazy" src="assets/{name}" width="{width}" height="{height}" alt="{caption}"></a><figcaption>{caption} <span>· 点击查看原图</span></figcaption></figure>'
+        sections += f'<figure class="figure"><a href="assets/{name}" target="_blank" rel="noopener" aria-label="查看{caption}原图"><img loading="lazy" src="assets/{name}" width="{width}" height="{height}" alt="{caption}"></a><figcaption>{caption}</figcaption></figure>'
     sections += '</section>'
 sidebar += '<a href="#milestones"><span>05</span>项目时间轴线</a></aside>'
 sections += '<section class="article-section" id="milestones"><div class="section-heading"><span class="number">05</span><h2>项目时间轴线</h2><small>MILESTONES</small></div><div class="timeline">'
