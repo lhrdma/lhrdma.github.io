@@ -2,6 +2,7 @@
 from pathlib import Path
 from shutil import copyfile
 from bs4 import BeautifulSoup
+from bs4.formatter import HTMLFormatter
 from html import escape
 
 root = Path(__file__).resolve().parent
@@ -37,7 +38,27 @@ for section in footer_source.select('.footer-section'):
 footer += f'</div><div class="copyright"><span>© 2024–2027 {title} 项目组</span><span>国家重点研发计划 · 青年科学家项目</span></div></div></footer>'
 
 def document(content, active, scripts=''):
-    return f'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{escape(subtitle)}"><title>{active} · {title}</title><link rel="icon" href="assets/NSFC.png"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="pages.css"><script src="main.js" defer></script>{scripts}</head><body>{header(active)}{content}{footer}</body></html>'
+    html = f'''<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="{escape(subtitle)}">
+    <title>{active} · {title}</title>
+    <link rel="icon" href="assets/NSFC.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <script src="main.js" defer></script>
+    {scripts}
+  </head>
+  <body>
+    {header(active)}
+    {content}
+    {footer}
+  </body>
+</html>
+'''
+    return BeautifulSoup(html, 'lxml').prettify(formatter=HTMLFormatter(indent=2))
 
 network = '''<div class="network"><svg viewBox="0 0 450 275" role="img" aria-labelledby="network-title"><title id="network-title">广域 RDMA 传输研究示意图</title><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#d5e0e9"/></pattern></defs><rect width="450" height="275" fill="url(#dots)"/><g stroke="#b0c4d6" stroke-width="1.3" fill="none"><path d="M65 142 165 60 285 76 392 147 275 226 165 214Z M65 142 165 214 285 76 M165 60 275 226 392 147 M65 142H392"/><path d="M165 60V214 M285 76 275 226" stroke-dasharray="4 5"/></g><path d="M65 142 165 60 285 76 392 147" stroke="#087e91" stroke-width="2.5" fill="none"/><g fill="white" stroke="#163b65" stroke-width="2"><circle cx="65" cy="142" r="11"/><circle cx="165" cy="60" r="9"/><circle cx="285" cy="76" r="11"/><circle cx="392" cy="147" r="11"/><circle cx="275" cy="226" r="9"/><circle cx="165" cy="214" r="8"/></g><g fill="#087e91"><circle cx="65" cy="142" r="4"/><circle cx="165" cy="60" r="3"/><circle cx="285" cy="76" r="4"/><circle cx="392" cy="147" r="4"/></g><g font-family="Microsoft YaHei, sans-serif" font-size="11" fill="#45617a"><text x="35" y="177">发送端</text><text x="138" y="35">协同控制</text><text x="258" y="50">拥塞感知</text><text x="371" y="182">接收端</text></g><rect x="163" y="122" width="127" height="37" fill="#f5f8fb" stroke="#b8cbdc"/><text x="226" y="146" fill="#163b65" text-anchor="middle" font-family="Georgia, serif" font-size="17" letter-spacing="3">WIDE-AREA</text></svg><div class="network-caption"><span>广域 RDMA 传输研究</span><span>RESEARCH OVERVIEW</span></div></div>'''
 hero = f'''<section class="hero"><div class="wrap hero-inner"><div class="hero-copy"><div class="eyebrow">国家重点研发计划 · 青年科学家项目</div><h1><span>拥塞感知的广域 RDMA</span><span>传输控制技术研究</span></h1><div class="hero-actions"><a class="primary" href="#background">了解项目 <span aria-hidden="true">↗</span></a><a class="text-link" href="news.html">最新新闻 <span aria-hidden="true">→</span></a></div></div>{network}</div><div class="wrap hero-meta"><span>牵头单位 / 北京邮电大学</span><span>参与单位 / 香港中文大学（深圳）</span><span>山东省计算中心（国家超级计算济南中心）</span></div></section>'''

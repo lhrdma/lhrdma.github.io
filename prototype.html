@@ -1,660 +1,1430 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="国家重点研发计划&quot;多模态网络与通信&quot;重点专项（青年科学家）项目"><title>原型系统 · 拥塞感知的广域RDMA传输控制技术研究</title><link rel="icon" href="assets/NSFC.png"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="pages.css"><script src="main.js" defer></script><script src="prototype.js" defer></script></head><body><a class="skip" href="#main">跳至正文</a><header class="masthead"><div class="wrap brand-row"><a class="brand" href="index.html"><img src="assets/NSFC.png" alt="国家自然科学基金委员会标志" width="62" height="62"><div><strong>拥塞感知的广域RDMA传输控制技术研究</strong><small>国家重点研发计划"多模态网络与通信"重点专项（青年科学家）项目</small></div></a><div class="brand-note">NATIONAL KEY R&amp;D PROGRAM OF CHINA<br>YOUNG SCIENTIST PROJECT</div><button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation">菜单</button></div><div class="nav-row" id="primary-navigation"><nav class="wrap" aria-label="主导航"><a href="index.html">项目概况</a><a href="news.html">最新新闻</a><a href="team.html">项目团队</a><a href="innovation.html">创新成果</a><a href="materials.html">资料汇编</a><a href="prototype.html" aria-current="page">原型系统</a></nav></div></header><main id="main"><section class="page-intro"><div class="wrap"><div class="eyebrow">PROTOTYPE & VALIDATION</div><h1>原型系统</h1><p>系统拓扑 / 测试结果 / 应用验证</p></div></section><div class="wrap page-body"><aside class="section-nav" aria-label="本页目录"><div class="label">原型系统 / CONTENTS</div><a href="#topology"><span>01</span>系统拓扑</a><a href="#results"><span>02</span>测试结果</a><a href="#app-verify"><span>03</span>应用验证</a></aside><div class="page-articles"><section class="article-section prototype-section" id="topology"><div class="section-heading"><span class="number">01</span><h2>系统拓扑</h2><small>SYSTEM TOPOLOGY</small></div><p class="prototype-note">节点信息沿用参考站；流量图为交互示意，非实时监测数据。</p><div class="proto-dashboard">
-<aside class="proto-left">
-<div class="proto-panel">
-<h3>流量概览 <span class="proto-badge">当前：<span id="current-node-badge">济南</span></span></h3>
-<div class="proto-traffic-chart">
-<svg id="traffic-chart" preserveaspectratio="none" viewBox="0 0 260 120">
-<line stroke="#e2e8f0" stroke-dasharray="2,2" x1="35" x2="250" y1="100" y2="100"></line>
-<text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="103">0</text><line stroke="#e2e8f0" stroke-dasharray="2,2" x1="35" x2="250" y1="77.5" y2="77.5"></line>
-<text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="80.5">25</text><line stroke="#e2e8f0" stroke-dasharray="2,2" x1="35" x2="250" y1="55" y2="55"></line>
-<text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="58">50</text><line stroke="#e2e8f0" stroke-dasharray="2,2" x1="35" x2="250" y1="32.5" y2="32.5"></line>
-<text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="35.5">75</text><line stroke="#e2e8f0" stroke-dasharray="2,2" x1="35" x2="250" y1="10" y2="10"></line>
-<text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="13">100</text>
-<polyline fill="none" points="35,43.93616262780137 42.41379310344828,30.943764686935296 49.827586206896555,42.97441463325101 57.241379310344826,29.697918605727082 64.65517241379311,38.981008479025256 72.06896551724138,44.62164600395879 79.48275862068965,35.717506054087906 86.89655172413794,38.072073125806504 94.3103448275862,45.931408939747925 101.72413793103449,33.58340971139157 109.13793103448276,39.756417112567796 116.55172413793103,45.66630425431036 123.9655172413793,35.12976039543523 131.3793103448276,35.56062205374637 138.79310344827587,40.84546299442875 146.20689655172413,46.389845268488685 153.6206896551724,47.44581860997313 161.0344827586207,46.396086583477064 168.44827586206898,43.20237486175631 175.86206896551724,35.30411300092781 183.27586206896552,45.07650404647713 190.6896551724138,41.3634073541751 198.10344827586206,35.64475774132245 205.51724137931035,36.69599178627097 212.9310344827586,46.774470325935454 220.3448275862069,46.814660791591784 227.75862068965517,39.13241718168121 235.17241379310343,45.48960921749441 242.58620689655174,34.656478076041054 250,31.79359892803727" stroke="#10b981" stroke-width="2"></polyline>
-<text fill="#94a3b8" font-size="8" transform="rotate(-90,15,60)" x="15" y="60">Gbps</text>
-</svg>
-</div>
-</div>
-<div class="proto-panel">
-<h3>节点概览</h3>
-<div class="proto-stat-row">
-<div class="proto-stat-box">
-<div class="proto-stat-value">19</div>
-<div class="proto-stat-label">节点总数</div>
-</div>
-<div class="proto-stat-box">
-<div class="proto-stat-value">3104</div>
-<div class="proto-stat-label">拓扑规模(km)</div>
-</div>
-</div>
-</div>
-<div class="proto-panel">
-<h3>流量 TOP5 城市</h3>
-<div class="proto-top5-list" id="top5-list">
-<div class="proto-top5-item">
-<span class="proto-top5-rank">1</span>
-<span class="proto-top5-name">深圳</span>
-<span class="proto-top5-spark"><svg preserveaspectratio="none" viewBox="0 0 80 20"><polyline fill="none" points="0,2.1838920373125177 7.272727272727273,1.3262887440005713 14.545454545454547,1.2566794174241593 21.818181818181817,0.13588532017470456 29.090909090909093,2.103969971136756 36.36363636363636,0.8151145641361097 43.63636363636363,0 50.90909090909091,2.7896477158618502 58.18181818181819,2.48060745400754 65.45454545454545,0.9674005334874707 72.72727272727272,0.8446827633578451 80,0.08256823015643278" stroke="#10b981" stroke-width="1.5"></polyline></svg></span>
-<span class="proto-top5-val">92.0G</span>
-</div>
-<div class="proto-top5-item">
-<span class="proto-top5-rank">2</span>
-<span class="proto-top5-name">北京</span>
-<span class="proto-top5-spark"><svg preserveaspectratio="none" viewBox="0 0 80 20"><polyline fill="none" points="0,4.780360005208216 7.272727272727273,0.674764614316878 14.545454545454547,3.438267196918339 21.818181818181817,0.15490093545097494 29.090909090909093,2.6226577998983984 36.36363636363636,0.904629855729123 43.63636363636363,3.520876473683792 50.90909090909091,1.033434022049022 58.18181818181819,4.517650958226593 65.45454545454545,0 72.72727272727272,3.1774461040492525 80,3.775725955071092" stroke="#10b981" stroke-width="1.5"></polyline></svg></span>
-<span class="proto-top5-val">85.0G</span>
-</div>
-<div class="proto-top5-item">
-<span class="proto-top5-rank">3</span>
-<span class="proto-top5-name">济南</span>
-<span class="proto-top5-spark"><svg preserveaspectratio="none" viewBox="0 0 80 20"><polyline fill="none" points="0,2.586720503912275 7.272727272727273,1.307059118074502 14.545454545454547,1.4199391774469845 21.818181818181817,2.0660498757898935 29.090909090909093,0 36.36363636363636,3.1029239864707527 43.63636363636363,3.4199761964556856 50.90909090909091,0.5479968967521529 58.18181818181819,0.3266301815070207 65.45454545454545,0.05119171074347406 72.72727272727272,3.7303664948762254 80,3.760767949392477" stroke="#10b981" stroke-width="1.5"></polyline></svg></span>
-<span class="proto-top5-val">68.0G</span>
-</div>
-<div class="proto-top5-item">
-<span class="proto-top5-rank">4</span>
-<span class="proto-top5-name">青岛</span>
-<span class="proto-top5-spark"><svg preserveaspectratio="none" viewBox="0 0 80 20"><polyline fill="none" points="0,4.055614987967566 7.272727272727273,0.7377540968720133 14.545454545454547,4.113905599612037 21.818181818181817,0.06686476325094759 29.090909090909093,1.986853260826134 36.36363636363636,4.543453384572761 43.63636363636363,1.2286930814600616 50.90909090909091,0 58.18181818181819,0.5276456313983928 65.45454545454545,3.7657176446067524 72.72727272727272,2.970565616421876 80,3.78218008046953" stroke="#10b981" stroke-width="1.5"></polyline></svg></span>
-<span class="proto-top5-val">56.0G</span>
-</div>
-<div class="proto-top5-item">
-<span class="proto-top5-rank">5</span>
-<span class="proto-top5-name">南京</span>
-<span class="proto-top5-spark"><svg preserveaspectratio="none" viewBox="0 0 80 20"><polyline fill="none" points="0,3.517588221842665 7.272727272727273,4.332726310402769 14.545454545454547,3.353358588159093 21.818181818181817,1.4869861204280888 29.090909090909093,0 36.36363636363636,0.8684151502479551 43.63636363636363,2.0657552073851946 50.90909090909091,0.7339459581752656 58.18181818181819,0.2862555438566652 65.45454545454545,2.843188173260806 72.72727272727272,1.8071685042164312 80,3.188785701707758" stroke="#10b981" stroke-width="1.5"></polyline></svg></span>
-<span class="proto-top5-val">42.0G</span>
-</div>
-</div>
-</div>
-</aside>
-<div class="proto-center">
-<div class="proto-map-wrap">
-<h3 class="proto-map-title">试验原型 — RDMA驱动的广域智算网络传输增强系统原型验证拓扑</h3>
-<div class="proto-map-canvas">
-<svg id="topology-map" preserveaspectratio="xMidYMid meet" viewBox="0 0 100 100">
-<defs>
-<pattern height="10" id="grid" patternunits="userSpaceOnUse" width="10">
-<path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.5"></path>
-</pattern>
-</defs>
-<rect fill="url(#grid)" height="100%" width="100%"></rect>
-<line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="25%" x2="45%" y1="10%" y2="35%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="45%" x2="52%" y1="35%" y2="60%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="52%" x2="50%" y1="60%" y2="90%"></line><line opacity="0.7" stroke="#10b981" stroke-width="2.5" x1="45%" x2="70%" y1="35%" y2="35%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="45%" x2="54%" y1="35%" y2="32%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="45%" x2="50%" y1="35%" y2="48%"></line><line opacity="0.7" stroke="rgba(37, 99, 235, 0.35)" stroke-width="0.8" x1="45%" x2="62%" y1="35%" y2="25%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="45%" x2="62%" y1="35%" y2="32%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="45%" x2="50%" y1="35%" y2="42%"></line><line opacity="0.7" stroke="rgba(37, 99, 235, 0.35)" stroke-width="0.8" x1="45%" x2="50%" y1="35%" y2="38%"></line><line opacity="0.7" stroke="rgba(37, 99, 235, 0.35)" stroke-width="0.8" x1="45%" x2="44%" y1="35%" y2="22%"></line><line opacity="0.7" stroke="rgba(37, 99, 235, 0.35)" stroke-width="0.8" x1="45%" x2="35%" y1="35%" y2="32%"></line><line opacity="0.7" stroke="rgba(37, 99, 235, 0.35)" stroke-width="0.8" x1="45%" x2="58%" y1="35%" y2="20%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="45%" x2="42%" y1="35%" y2="49%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="70%" x2="70%" y1="35%" y2="22%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="70%" x2="75%" y1="35%" y2="18%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="70%" x2="70%" y1="35%" y2="44%"></line><line opacity="0.7" stroke="#2563eb" stroke-width="1.5" x1="70%" x2="64%" y1="35%" y2="46%"></line>
-<g class="proto-node" data-id="beijing">
-<circle cx="25%" cy="10%" fill="none" opacity="0.4" r="1.8" stroke="#10b981" stroke-width="0.3"></circle>
-<circle cx="25%" cy="10%" fill="#10b981" r="1.8"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="700" text-anchor="middle" x="25%" y="14%">北京</text>
-</g>
-<g class="proto-node" data-id="shenzhen">
-<circle cx="50%" cy="90%" fill="none" opacity="0.4" r="1.8" stroke="#10b981" stroke-width="0.3"></circle>
-<circle cx="50%" cy="90%" fill="#10b981" r="1.8"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="700" text-anchor="middle" x="50%" y="94%">深圳</text>
-</g>
-<g class="proto-node" data-id="jinan">
-<circle cx="45%" cy="35%" fill="none" opacity="0.4" r="2.4" stroke="#10b981" stroke-width="0.3"></circle>
-<circle cx="45%" cy="35%" fill="#10b981" r="1.8" stroke="#2563eb" stroke-width="0.6"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="700" text-anchor="middle" x="45%" y="39%">济南</text>
-</g>
-<g class="proto-node" data-id="nanjing">
-<circle cx="52%" cy="60%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="52%" cy="60%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="52%" y="64%">南京</text>
-</g>
-<g class="proto-node" data-id="qingdao">
-<circle cx="70%" cy="35%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="70%" cy="35%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="70%" y="39%">青岛</text>
-</g>
-<g class="proto-node" data-id="yantai">
-<circle cx="70%" cy="22%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="70%" cy="22%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="70%" y="26%">烟台</text>
-</g>
-<g class="proto-node" data-id="weihai">
-<circle cx="75%" cy="18%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="75%" cy="18%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="75%" y="22%">威海</text>
-</g>
-<g class="proto-node" data-id="dongying">
-<circle cx="62%" cy="25%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="62%" cy="25%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="62%" y="29%">东营</text>
-</g>
-<g class="proto-node" data-id="weifang">
-<circle cx="62%" cy="32%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="62%" cy="32%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="62%" y="36%">潍坊</text>
-</g>
-<g class="proto-node" data-id="rizhao">
-<circle cx="70%" cy="44%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="70%" cy="44%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="70%" y="48%">日照</text>
-</g>
-<g class="proto-node" data-id="linyi">
-<circle cx="64%" cy="46%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="64%" cy="46%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="64%" y="50%">临沂</text>
-</g>
-<g class="proto-node" data-id="zibo">
-<circle cx="54%" cy="32%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="54%" cy="32%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="54%" y="36%">淄博</text>
-</g>
-<g class="proto-node" data-id="binzhou">
-<circle cx="58%" cy="20%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="58%" cy="20%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="58%" y="24%">滨州</text>
-</g>
-<g class="proto-node" data-id="dezhou">
-<circle cx="44%" cy="22%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="44%" cy="22%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="44%" y="26%">德州</text>
-</g>
-<g class="proto-node" data-id="liaocheng">
-<circle cx="35%" cy="32%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="35%" cy="32%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="35%" y="36%">聊城</text>
-</g>
-<g class="proto-node" data-id="taian">
-<circle cx="50%" cy="38%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="50%" cy="38%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="50%" y="42%">泰安</text>
-</g>
-<g class="proto-node" data-id="jining">
-<circle cx="50%" cy="42%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="50%" cy="42%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="50%" y="46%">济宁</text>
-</g>
-<g class="proto-node" data-id="heze">
-<circle cx="42%" cy="49%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="42%" cy="49%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="42%" y="53%">菏泽</text>
-</g>
-<g class="proto-node" data-id="zaozhuang">
-<circle cx="50%" cy="48%" fill="none" opacity="0.4" r="1.2" stroke="#2563eb" stroke-width="0.3"></circle>
-<circle cx="50%" cy="48%" fill="#2563eb" r="1.2"></circle>
-<text fill="#1e293b" font-size="2.2" font-weight="400" text-anchor="middle" x="50%" y="52%">枣庄</text>
-</g>
-</svg>
-</div>
-</div>
-<div class="proto-legend">
-<span class="proto-legend-item"><span class="proto-legend-dot"></span>关键节点</span>
-<span class="proto-legend-item"><span class="proto-legend-dot"></span>普通节点</span>
-<span class="proto-legend-item"><span class="proto-legend-line"></span>200Gbps</span>
-<span class="proto-legend-item"><span class="proto-legend-line"></span>100Gbps</span>
-<span class="proto-legend-item"><span class="proto-legend-line"></span>10Gbps</span>
-</div>
-</div>
-<aside class="proto-right">
-<div class="proto-panel proto-node-detail">
-<h3>节点详情</h3>
-<div id="node-detail">
-<div class="proto-detail-row"><span class="proto-detail-label">节点名称</span><span class="proto-detail-value">济南</span></div>
-<div class="proto-detail-row"><span class="proto-detail-label">所在位置</span><span class="proto-detail-value">济南超算</span></div>
-<div class="proto-detail-row"><span class="proto-detail-label">节点类型</span><span class="proto-detail-value">关键节点</span></div>
-<div class="proto-detail-row"><span class="proto-detail-label">当前流量</span><span class="proto-detail-value">68.0 Gbps</span></div>
-<div class="proto-detail-row"><span class="proto-detail-label">连接数</span><span class="proto-detail-value">13</span></div>
-<img alt="济南" class="proto-node-image" loading="lazy" src="assets/prototype/jinan.jpeg"/>
-</div>
-</div>
-<div class="proto-panel">
-<h3>数据说明</h3>
-<p class="proto-link-info">数据非实时数据，是2026年5月测试历史数据。</p>
-</div>
-</aside>
-</div></section><section class="article-section prototype-section" id="results"><div class="section-heading"><span class="number">02</span><h2>测试结果</h2><small>TEST RESULTS</small></div>
-<div class="proto-results-header">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content='国家重点研发计划"多模态网络与通信"重点专项（青年科学家）项目'
+    />
+    <title>原型系统 · 拥塞感知的广域RDMA传输控制技术研究</title>
+    <link rel="icon" href="assets/NSFC.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    <script src="main.js" defer></script>
+    <script src="prototype.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">跳至正文</a>
+    <header class="masthead">
+      <div class="wrap brand-row">
+        <a class="brand" href="index.html"
+          ><img src="assets/NSFC.png" alt="国家自然科学基金委员会标志" width="62" height="62" />
+          <div>
+            <strong>拥塞感知的广域RDMA传输控制技术研究</strong
+            ><small>国家重点研发计划"多模态网络与通信"重点专项（青年科学家）项目</small>
+          </div></a
+        >
+        <div class="brand-note">
+          NATIONAL KEY R&amp;D PROGRAM OF CHINA<br />YOUNG SCIENTIST PROJECT
+        </div>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation">
+          菜单
+        </button>
+      </div>
+      <div class="nav-row" id="primary-navigation">
+        <nav class="wrap" aria-label="主导航">
+          <a href="index.html">项目概况</a><a href="news.html">最新新闻</a
+          ><a href="team.html">项目团队</a><a href="innovation.html">创新成果</a
+          ><a href="materials.html">资料汇编</a
+          ><a href="prototype.html" aria-current="page">原型系统</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <section class="page-intro">
+        <div class="wrap">
+          <div class="eyebrow">PROTOTYPE & VALIDATION</div>
+          <h1>原型系统</h1>
+          <p>系统拓扑 / 测试结果 / 应用验证</p>
+        </div>
+      </section>
+      <div class="wrap page-body">
+        <aside class="section-nav" aria-label="本页目录">
+          <div class="label">原型系统 / CONTENTS</div>
+          <a href="#topology"><span>01</span>系统拓扑</a
+          ><a href="#results"><span>02</span>测试结果</a
+          ><a href="#app-verify"><span>03</span>应用验证</a>
+        </aside>
+        <div class="page-articles">
+          <section class="article-section prototype-section" id="topology">
+            <div class="section-heading">
+              <span class="number">01</span>
+              <h2>系统拓扑</h2>
+              <small>SYSTEM TOPOLOGY</small>
+            </div>
+            <p class="prototype-note">节点信息沿用参考站；流量图为交互示意，非实时监测数据。</p>
+            <div class="proto-dashboard">
+              <aside class="proto-left">
+                <div class="proto-panel">
+                  <h3>
+                    流量概览
+                    <span class="proto-badge">当前：<span id="current-node-badge">济南</span></span>
+                  </h3>
+                  <div class="proto-traffic-chart">
+                    <svg id="traffic-chart" preserveaspectratio="none" viewBox="0 0 260 120">
+                      <line
+                        stroke="#e2e8f0"
+                        stroke-dasharray="2,2"
+                        x1="35"
+                        x2="250"
+                        y1="100"
+                        y2="100"
+                      ></line>
+                      <text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="103">0</text>
+                      <line
+                        stroke="#e2e8f0"
+                        stroke-dasharray="2,2"
+                        x1="35"
+                        x2="250"
+                        y1="77.5"
+                        y2="77.5"
+                      ></line>
+                      <text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="80.5">25</text>
+                      <line
+                        stroke="#e2e8f0"
+                        stroke-dasharray="2,2"
+                        x1="35"
+                        x2="250"
+                        y1="55"
+                        y2="55"
+                      ></line>
+                      <text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="58">50</text>
+                      <line
+                        stroke="#e2e8f0"
+                        stroke-dasharray="2,2"
+                        x1="35"
+                        x2="250"
+                        y1="32.5"
+                        y2="32.5"
+                      ></line>
+                      <text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="35.5">75</text>
+                      <line
+                        stroke="#e2e8f0"
+                        stroke-dasharray="2,2"
+                        x1="35"
+                        x2="250"
+                        y1="10"
+                        y2="10"
+                      ></line>
+                      <text fill="#94a3b8" font-size="8" text-anchor="end" x="30" y="13">100</text>
+                      <polyline
+                        fill="none"
+                        points="35,43.93616262780137 42.41379310344828,30.943764686935296 49.827586206896555,42.97441463325101 57.241379310344826,29.697918605727082 64.65517241379311,38.981008479025256 72.06896551724138,44.62164600395879 79.48275862068965,35.717506054087906 86.89655172413794,38.072073125806504 94.3103448275862,45.931408939747925 101.72413793103449,33.58340971139157 109.13793103448276,39.756417112567796 116.55172413793103,45.66630425431036 123.9655172413793,35.12976039543523 131.3793103448276,35.56062205374637 138.79310344827587,40.84546299442875 146.20689655172413,46.389845268488685 153.6206896551724,47.44581860997313 161.0344827586207,46.396086583477064 168.44827586206898,43.20237486175631 175.86206896551724,35.30411300092781 183.27586206896552,45.07650404647713 190.6896551724138,41.3634073541751 198.10344827586206,35.64475774132245 205.51724137931035,36.69599178627097 212.9310344827586,46.774470325935454 220.3448275862069,46.814660791591784 227.75862068965517,39.13241718168121 235.17241379310343,45.48960921749441 242.58620689655174,34.656478076041054 250,31.79359892803727"
+                        stroke="#10b981"
+                        stroke-width="2"
+                      ></polyline>
+                      <text
+                        fill="#94a3b8"
+                        font-size="8"
+                        transform="rotate(-90,15,60)"
+                        x="15"
+                        y="60"
+                      >
+                        Gbps
+                      </text>
+                    </svg>
+                  </div>
+                </div>
+                <div class="proto-panel">
+                  <h3>节点概览</h3>
+                  <div class="proto-stat-row">
+                    <div class="proto-stat-box">
+                      <div class="proto-stat-value">19</div>
+                      <div class="proto-stat-label">节点总数</div>
+                    </div>
+                    <div class="proto-stat-box">
+                      <div class="proto-stat-value">3104</div>
+                      <div class="proto-stat-label">拓扑规模(km)</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="proto-panel">
+                  <h3>流量 TOP5 城市</h3>
+                  <div class="proto-top5-list" id="top5-list">
+                    <div class="proto-top5-item">
+                      <span class="proto-top5-rank">1</span>
+                      <span class="proto-top5-name">深圳</span>
+                      <span class="proto-top5-spark"
+                        ><svg preserveaspectratio="none" viewBox="0 0 80 20">
+                          <polyline
+                            fill="none"
+                            points="0,2.1838920373125177 7.272727272727273,1.3262887440005713 14.545454545454547,1.2566794174241593 21.818181818181817,0.13588532017470456 29.090909090909093,2.103969971136756 36.36363636363636,0.8151145641361097 43.63636363636363,0 50.90909090909091,2.7896477158618502 58.18181818181819,2.48060745400754 65.45454545454545,0.9674005334874707 72.72727272727272,0.8446827633578451 80,0.08256823015643278"
+                            stroke="#10b981"
+                            stroke-width="1.5"
+                          ></polyline></svg
+                      ></span>
+                      <span class="proto-top5-val">92.0G</span>
+                    </div>
+                    <div class="proto-top5-item">
+                      <span class="proto-top5-rank">2</span>
+                      <span class="proto-top5-name">北京</span>
+                      <span class="proto-top5-spark"
+                        ><svg preserveaspectratio="none" viewBox="0 0 80 20">
+                          <polyline
+                            fill="none"
+                            points="0,4.780360005208216 7.272727272727273,0.674764614316878 14.545454545454547,3.438267196918339 21.818181818181817,0.15490093545097494 29.090909090909093,2.6226577998983984 36.36363636363636,0.904629855729123 43.63636363636363,3.520876473683792 50.90909090909091,1.033434022049022 58.18181818181819,4.517650958226593 65.45454545454545,0 72.72727272727272,3.1774461040492525 80,3.775725955071092"
+                            stroke="#10b981"
+                            stroke-width="1.5"
+                          ></polyline></svg
+                      ></span>
+                      <span class="proto-top5-val">85.0G</span>
+                    </div>
+                    <div class="proto-top5-item">
+                      <span class="proto-top5-rank">3</span>
+                      <span class="proto-top5-name">济南</span>
+                      <span class="proto-top5-spark"
+                        ><svg preserveaspectratio="none" viewBox="0 0 80 20">
+                          <polyline
+                            fill="none"
+                            points="0,2.586720503912275 7.272727272727273,1.307059118074502 14.545454545454547,1.4199391774469845 21.818181818181817,2.0660498757898935 29.090909090909093,0 36.36363636363636,3.1029239864707527 43.63636363636363,3.4199761964556856 50.90909090909091,0.5479968967521529 58.18181818181819,0.3266301815070207 65.45454545454545,0.05119171074347406 72.72727272727272,3.7303664948762254 80,3.760767949392477"
+                            stroke="#10b981"
+                            stroke-width="1.5"
+                          ></polyline></svg
+                      ></span>
+                      <span class="proto-top5-val">68.0G</span>
+                    </div>
+                    <div class="proto-top5-item">
+                      <span class="proto-top5-rank">4</span>
+                      <span class="proto-top5-name">青岛</span>
+                      <span class="proto-top5-spark"
+                        ><svg preserveaspectratio="none" viewBox="0 0 80 20">
+                          <polyline
+                            fill="none"
+                            points="0,4.055614987967566 7.272727272727273,0.7377540968720133 14.545454545454547,4.113905599612037 21.818181818181817,0.06686476325094759 29.090909090909093,1.986853260826134 36.36363636363636,4.543453384572761 43.63636363636363,1.2286930814600616 50.90909090909091,0 58.18181818181819,0.5276456313983928 65.45454545454545,3.7657176446067524 72.72727272727272,2.970565616421876 80,3.78218008046953"
+                            stroke="#10b981"
+                            stroke-width="1.5"
+                          ></polyline></svg
+                      ></span>
+                      <span class="proto-top5-val">56.0G</span>
+                    </div>
+                    <div class="proto-top5-item">
+                      <span class="proto-top5-rank">5</span>
+                      <span class="proto-top5-name">南京</span>
+                      <span class="proto-top5-spark"
+                        ><svg preserveaspectratio="none" viewBox="0 0 80 20">
+                          <polyline
+                            fill="none"
+                            points="0,3.517588221842665 7.272727272727273,4.332726310402769 14.545454545454547,3.353358588159093 21.818181818181817,1.4869861204280888 29.090909090909093,0 36.36363636363636,0.8684151502479551 43.63636363636363,2.0657552073851946 50.90909090909091,0.7339459581752656 58.18181818181819,0.2862555438566652 65.45454545454545,2.843188173260806 72.72727272727272,1.8071685042164312 80,3.188785701707758"
+                            stroke="#10b981"
+                            stroke-width="1.5"
+                          ></polyline></svg
+                      ></span>
+                      <span class="proto-top5-val">42.0G</span>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+              <div class="proto-center">
+                <div class="proto-map-wrap">
+                  <h3 class="proto-map-title">
+                    试验原型 — RDMA驱动的广域智算网络传输增强系统原型验证拓扑
+                  </h3>
+                  <div class="proto-map-canvas">
+                    <svg
+                      id="topology-map"
+                      preserveaspectratio="xMidYMid meet"
+                      viewBox="0 0 100 100"
+                    >
+                      <defs>
+                        <pattern height="10" id="grid" patternunits="userSpaceOnUse" width="10">
+                          <path
+                            d="M 10 0 L 0 0 0 10"
+                            fill="none"
+                            stroke="#e2e8f0"
+                            stroke-width="0.5"
+                          ></path>
+                        </pattern>
+                      </defs>
+                      <rect fill="url(#grid)" height="100%" width="100%"></rect>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="25%"
+                        x2="45%"
+                        y1="10%"
+                        y2="35%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="45%"
+                        x2="52%"
+                        y1="35%"
+                        y2="60%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="52%"
+                        x2="50%"
+                        y1="60%"
+                        y2="90%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#10b981"
+                        stroke-width="2.5"
+                        x1="45%"
+                        x2="70%"
+                        y1="35%"
+                        y2="35%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="45%"
+                        x2="54%"
+                        y1="35%"
+                        y2="32%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="45%"
+                        x2="50%"
+                        y1="35%"
+                        y2="48%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="rgba(37, 99, 235, 0.35)"
+                        stroke-width="0.8"
+                        x1="45%"
+                        x2="62%"
+                        y1="35%"
+                        y2="25%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="45%"
+                        x2="62%"
+                        y1="35%"
+                        y2="32%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="45%"
+                        x2="50%"
+                        y1="35%"
+                        y2="42%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="rgba(37, 99, 235, 0.35)"
+                        stroke-width="0.8"
+                        x1="45%"
+                        x2="50%"
+                        y1="35%"
+                        y2="38%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="rgba(37, 99, 235, 0.35)"
+                        stroke-width="0.8"
+                        x1="45%"
+                        x2="44%"
+                        y1="35%"
+                        y2="22%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="rgba(37, 99, 235, 0.35)"
+                        stroke-width="0.8"
+                        x1="45%"
+                        x2="35%"
+                        y1="35%"
+                        y2="32%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="rgba(37, 99, 235, 0.35)"
+                        stroke-width="0.8"
+                        x1="45%"
+                        x2="58%"
+                        y1="35%"
+                        y2="20%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="45%"
+                        x2="42%"
+                        y1="35%"
+                        y2="49%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="70%"
+                        x2="70%"
+                        y1="35%"
+                        y2="22%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="70%"
+                        x2="75%"
+                        y1="35%"
+                        y2="18%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="70%"
+                        x2="70%"
+                        y1="35%"
+                        y2="44%"
+                      ></line>
+                      <line
+                        opacity="0.7"
+                        stroke="#2563eb"
+                        stroke-width="1.5"
+                        x1="70%"
+                        x2="64%"
+                        y1="35%"
+                        y2="46%"
+                      ></line>
+                      <g class="proto-node" data-id="beijing">
+                        <circle
+                          cx="25%"
+                          cy="10%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.8"
+                          stroke="#10b981"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="25%" cy="10%" fill="#10b981" r="1.8"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="700"
+                          text-anchor="middle"
+                          x="25%"
+                          y="14%"
+                        >
+                          北京
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="shenzhen">
+                        <circle
+                          cx="50%"
+                          cy="90%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.8"
+                          stroke="#10b981"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="50%" cy="90%" fill="#10b981" r="1.8"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="700"
+                          text-anchor="middle"
+                          x="50%"
+                          y="94%"
+                        >
+                          深圳
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="jinan">
+                        <circle
+                          cx="45%"
+                          cy="35%"
+                          fill="none"
+                          opacity="0.4"
+                          r="2.4"
+                          stroke="#10b981"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle
+                          cx="45%"
+                          cy="35%"
+                          fill="#10b981"
+                          r="1.8"
+                          stroke="#2563eb"
+                          stroke-width="0.6"
+                        ></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="700"
+                          text-anchor="middle"
+                          x="45%"
+                          y="39%"
+                        >
+                          济南
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="nanjing">
+                        <circle
+                          cx="52%"
+                          cy="60%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="52%" cy="60%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="52%"
+                          y="64%"
+                        >
+                          南京
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="qingdao">
+                        <circle
+                          cx="70%"
+                          cy="35%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="70%" cy="35%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="70%"
+                          y="39%"
+                        >
+                          青岛
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="yantai">
+                        <circle
+                          cx="70%"
+                          cy="22%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="70%" cy="22%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="70%"
+                          y="26%"
+                        >
+                          烟台
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="weihai">
+                        <circle
+                          cx="75%"
+                          cy="18%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="75%" cy="18%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="75%"
+                          y="22%"
+                        >
+                          威海
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="dongying">
+                        <circle
+                          cx="62%"
+                          cy="25%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="62%" cy="25%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="62%"
+                          y="29%"
+                        >
+                          东营
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="weifang">
+                        <circle
+                          cx="62%"
+                          cy="32%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="62%" cy="32%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="62%"
+                          y="36%"
+                        >
+                          潍坊
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="rizhao">
+                        <circle
+                          cx="70%"
+                          cy="44%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="70%" cy="44%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="70%"
+                          y="48%"
+                        >
+                          日照
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="linyi">
+                        <circle
+                          cx="64%"
+                          cy="46%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="64%" cy="46%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="64%"
+                          y="50%"
+                        >
+                          临沂
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="zibo">
+                        <circle
+                          cx="54%"
+                          cy="32%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="54%" cy="32%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="54%"
+                          y="36%"
+                        >
+                          淄博
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="binzhou">
+                        <circle
+                          cx="58%"
+                          cy="20%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="58%" cy="20%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="58%"
+                          y="24%"
+                        >
+                          滨州
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="dezhou">
+                        <circle
+                          cx="44%"
+                          cy="22%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="44%" cy="22%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="44%"
+                          y="26%"
+                        >
+                          德州
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="liaocheng">
+                        <circle
+                          cx="35%"
+                          cy="32%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="35%" cy="32%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="35%"
+                          y="36%"
+                        >
+                          聊城
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="taian">
+                        <circle
+                          cx="50%"
+                          cy="38%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="50%" cy="38%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="50%"
+                          y="42%"
+                        >
+                          泰安
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="jining">
+                        <circle
+                          cx="50%"
+                          cy="42%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="50%" cy="42%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="50%"
+                          y="46%"
+                        >
+                          济宁
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="heze">
+                        <circle
+                          cx="42%"
+                          cy="49%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="42%" cy="49%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="42%"
+                          y="53%"
+                        >
+                          菏泽
+                        </text>
+                      </g>
+                      <g class="proto-node" data-id="zaozhuang">
+                        <circle
+                          cx="50%"
+                          cy="48%"
+                          fill="none"
+                          opacity="0.4"
+                          r="1.2"
+                          stroke="#2563eb"
+                          stroke-width="0.3"
+                        ></circle>
+                        <circle cx="50%" cy="48%" fill="#2563eb" r="1.2"></circle>
+                        <text
+                          fill="#1e293b"
+                          font-size="2.2"
+                          font-weight="400"
+                          text-anchor="middle"
+                          x="50%"
+                          y="52%"
+                        >
+                          枣庄
+                        </text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="proto-legend">
+                  <span class="proto-legend-item"
+                    ><span class="proto-legend-dot"></span>关键节点</span
+                  >
+                  <span class="proto-legend-item"
+                    ><span class="proto-legend-dot"></span>普通节点</span
+                  >
+                  <span class="proto-legend-item"
+                    ><span class="proto-legend-line"></span>200Gbps</span
+                  >
+                  <span class="proto-legend-item"
+                    ><span class="proto-legend-line"></span>100Gbps</span
+                  >
+                  <span class="proto-legend-item"
+                    ><span class="proto-legend-line"></span>10Gbps</span
+                  >
+                </div>
+              </div>
+              <aside class="proto-right">
+                <div class="proto-panel proto-node-detail">
+                  <h3>节点详情</h3>
+                  <div id="node-detail">
+                    <div class="proto-detail-row">
+                      <span class="proto-detail-label">节点名称</span
+                      ><span class="proto-detail-value">济南</span>
+                    </div>
+                    <div class="proto-detail-row">
+                      <span class="proto-detail-label">所在位置</span
+                      ><span class="proto-detail-value">济南超算</span>
+                    </div>
+                    <div class="proto-detail-row">
+                      <span class="proto-detail-label">节点类型</span
+                      ><span class="proto-detail-value">关键节点</span>
+                    </div>
+                    <div class="proto-detail-row">
+                      <span class="proto-detail-label">当前流量</span
+                      ><span class="proto-detail-value">68.0 Gbps</span>
+                    </div>
+                    <div class="proto-detail-row">
+                      <span class="proto-detail-label">连接数</span
+                      ><span class="proto-detail-value">13</span>
+                    </div>
+                    <img
+                      alt="济南"
+                      class="proto-node-image"
+                      loading="lazy"
+                      src="assets/prototype/jinan.jpeg"
+                    />
+                  </div>
+                </div>
+                <div class="proto-panel">
+                  <h3>数据说明</h3>
+                  <p class="proto-link-info">数据非实时数据，是2026年5月测试历史数据。</p>
+                </div>
+              </aside>
+            </div>
+          </section>
+          <section class="article-section prototype-section" id="results">
+            <div class="section-heading">
+              <span class="number">02</span>
+              <h2>测试结果</h2>
+              <small>TEST RESULTS</small>
+            </div>
+            <div class="proto-results-header">
+              <div class="proto-cert-badge" title="测试结果经中国信通院泰尔实验室检测认证">
+                <span class="proto-cert-text">测试结果经中国信通院泰尔实验室检测认证！</span>
+              </div>
+            </div>
+            <div class="proto-results-list">
+              <article class="proto-result-item">
+                <div class="proto-table-wrap">
+                  <table class="proto-data-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">方案</th>
+                        <th colspan="6" scope="colgroup">丢包率统计结果 (%)</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">1ms</th>
+                        <th scope="col">5ms</th>
+                        <th scope="col">10ms</th>
+                        <th scope="col">20ms</th>
+                        <th scope="col">30ms</th>
+                        <th scope="col">50ms</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="proto-row-highlight">
+                        <td>DCQCN (w/o PFC)</td>
+                        <td>48.79%</td>
+                        <td>47.98%</td>
+                        <td>46.30%</td>
+                        <td>41.25%</td>
+                        <td>44.76%</td>
+                        <td>48.79%</td>
+                      </tr>
+                      <tr class="proto-row-highlight">
+                        <td>DCQCN (w/ PFC)</td>
+                        <td>0.00%</td>
+                        <td>0.00%</td>
+                        <td>0.00%</td>
+                        <td>0.00%</td>
+                        <td>0.00%</td>
+                        <td>0.00%</td>
+                      </tr>
+                      <tr>
+                        <td>TIMELY</td>
+                        <td>0.00%</td>
+                        <td>23.74%</td>
+                        <td>31.02%</td>
+                        <td>34.80%</td>
+                        <td>30.65%</td>
+                        <td>28.54%</td>
+                      </tr>
+                      <tr class="proto-row-highlight proto-row-ours">
+                        <td>本项目方案</td>
+                        <td>0.00%</td>
+                        <td>0.01%</td>
+                        <td>0.20%</td>
+                        <td>0.56%</td>
+                        <td>0.62%</td>
+                        <td>0.76%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="proto-result-item">
+                <div class="proto-table-wrap">
+                  <table class="proto-data-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">方案</th>
+                        <th colspan="6" scope="colgroup">流完成时间统计结果 (ms)</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">1ms</th>
+                        <th scope="col">5ms</th>
+                        <th scope="col">10ms</th>
+                        <th scope="col">20ms</th>
+                        <th scope="col">30ms</th>
+                        <th scope="col">50ms</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="proto-row-highlight">
+                        <td>PFC</td>
+                        <td>57588.581</td>
+                        <td>64717.822</td>
+                        <td>72197.821</td>
+                        <td>79930.282</td>
+                        <td>86215.188</td>
+                        <td>90182.281</td>
+                      </tr>
+                      <tr class="proto-row-highlight proto-row-ours">
+                        <td>本项目方案</td>
+                        <td>11928.281</td>
+                        <td>13486.506</td>
+                        <td>15349.169</td>
+                        <td>17291.911</td>
+                        <td>23749.796</td>
+                        <td>26718.121</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="proto-result-item">
+                <div class="proto-table-wrap">
+                  <table class="proto-data-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">方案</th>
+                        <th colspan="6" scope="colgroup">单 QP 长距吞吐统计结果 (Gbps)</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">1ms</th>
+                        <th scope="col">5ms</th>
+                        <th scope="col">10ms</th>
+                        <th scope="col">20ms</th>
+                        <th scope="col">30ms</th>
+                        <th scope="col">50ms</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="proto-row-highlight">
+                        <td>DCQCN</td>
+                        <td>2.270</td>
+                        <td>4.220</td>
+                        <td>7.280</td>
+                        <td>11.360</td>
+                        <td>12.220</td>
+                        <td>10.550</td>
+                      </tr>
+                      <tr>
+                        <td>TIMELY</td>
+                        <td>80.930</td>
+                        <td>39.320</td>
+                        <td>32.430</td>
+                        <td>28.310</td>
+                        <td>24.120</td>
+                        <td>16.370</td>
+                      </tr>
+                      <tr class="proto-row-highlight proto-row-ours">
+                        <td>本项目方案</td>
+                        <td>89.700</td>
+                        <td>71.970</td>
+                        <td>65.280</td>
+                        <td>56.080</td>
+                        <td>53.230</td>
+                        <td>49.340</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="proto-result-item">
+                <div class="proto-table-wrap">
+                  <table class="proto-data-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">方案</th>
+                        <th colspan="6" scope="colgroup">P90 尾流完成时间统计结果 (ms)</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">1ms</th>
+                        <th scope="col">5ms</th>
+                        <th scope="col">10ms</th>
+                        <th scope="col">20ms</th>
+                        <th scope="col">30ms</th>
+                        <th scope="col">50ms</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="proto-row-highlight">
+                        <td>PFC</td>
+                        <td>197884.12</td>
+                        <td>188186.465</td>
+                        <td>221847.829</td>
+                        <td>252742.218</td>
+                        <td>252386.193</td>
+                        <td>321271.176</td>
+                      </tr>
+                      <tr class="proto-row-highlight proto-row-ours">
+                        <td>本项目方案</td>
+                        <td>32819.874</td>
+                        <td>37599.987</td>
+                        <td>38285.37</td>
+                        <td>42911.921</td>
+                        <td>58811.636</td>
+                        <td>57882.129</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="proto-result-item">
+                <div class="proto-table-wrap">
+                  <table class="proto-data-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">方案</th>
+                        <th colspan="6" scope="colgroup">All to All 吞吐统计结果 (GB)</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">1ms</th>
+                        <th scope="col">5ms</th>
+                        <th scope="col">10ms</th>
+                        <th scope="col">20ms</th>
+                        <th scope="col">30ms</th>
+                        <th scope="col">50ms</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="proto-row-highlight">
+                        <td>DCQCN</td>
+                        <td>8.75</td>
+                        <td>8.44</td>
+                        <td>4.45</td>
+                        <td>4.12</td>
+                        <td>2.88</td>
+                        <td>1.77</td>
+                      </tr>
+                      <tr>
+                        <td>TIMELY</td>
+                        <td>8.50</td>
+                        <td>8.18</td>
+                        <td>4.30</td>
+                        <td>3.99</td>
+                        <td>2.77</td>
+                        <td>1.70</td>
+                      </tr>
+                      <tr class="proto-row-highlight proto-row-ours">
+                        <td>本项目方案</td>
+                        <td>11.00</td>
+                        <td>8.64</td>
+                        <td>5.22</td>
+                        <td>5.34</td>
+                        <td>3.97</td>
+                        <td>2.68</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="article-section prototype-section" id="app-verify">
+            <div class="section-heading">
+              <span class="number">03</span>
+              <h2>应用验证</h2>
+              <small>APPLICATION VALIDATION</small>
+            </div>
 
-<div class="proto-cert-badge" title="测试结果经中国信通院泰尔实验室检测认证">
-<span class="proto-cert-text">测试结果经中国信通院泰尔实验室检测认证！</span>
-</div>
-</div>
-<div class="proto-results-list">
-<article class="proto-result-item">
-<div class="proto-table-wrap">
-<table class="proto-data-table">
-<thead>
-<tr>
-<th rowspan="2" scope="col">方案</th>
-<th colspan="6" scope="colgroup">丢包率统计结果 (%)</th>
-</tr>
-<tr>
-<th scope="col">1ms</th>
-<th scope="col">5ms</th>
-<th scope="col">10ms</th>
-<th scope="col">20ms</th>
-<th scope="col">30ms</th>
-<th scope="col">50ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="proto-row-highlight">
-<td>DCQCN (w/o PFC)</td>
-<td>48.79%</td>
-<td>47.98%</td>
-<td>46.30%</td>
-<td>41.25%</td>
-<td>44.76%</td>
-<td>48.79%</td>
-</tr>
-<tr class="proto-row-highlight">
-<td>DCQCN (w/ PFC)</td>
-<td>0.00%</td>
-<td>0.00%</td>
-<td>0.00%</td>
-<td>0.00%</td>
-<td>0.00%</td>
-<td>0.00%</td>
-</tr>
-<tr>
-<td>TIMELY</td>
-<td>0.00%</td>
-<td>23.74%</td>
-<td>31.02%</td>
-<td>34.80%</td>
-<td>30.65%</td>
-<td>28.54%</td>
-</tr>
-<tr class="proto-row-highlight proto-row-ours">
-<td>本项目方案</td>
-<td>0.00%</td>
-<td>0.01%</td>
-<td>0.20%</td>
-<td>0.56%</td>
-<td>0.62%</td>
-<td>0.76%</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-<article class="proto-result-item">
-<div class="proto-table-wrap">
-<table class="proto-data-table">
-<thead>
-<tr>
-<th rowspan="2" scope="col">方案</th>
-<th colspan="6" scope="colgroup">流完成时间统计结果 (ms)</th>
-</tr>
-<tr>
-<th scope="col">1ms</th>
-<th scope="col">5ms</th>
-<th scope="col">10ms</th>
-<th scope="col">20ms</th>
-<th scope="col">30ms</th>
-<th scope="col">50ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="proto-row-highlight">
-<td>PFC</td>
-<td>57588.581</td>
-<td>64717.822</td>
-<td>72197.821</td>
-<td>79930.282</td>
-<td>86215.188</td>
-<td>90182.281</td>
-</tr>
-<tr class="proto-row-highlight proto-row-ours">
-<td>本项目方案</td>
-<td>11928.281</td>
-<td>13486.506</td>
-<td>15349.169</td>
-<td>17291.911</td>
-<td>23749.796</td>
-<td>26718.121</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-<article class="proto-result-item">
-<div class="proto-table-wrap">
-<table class="proto-data-table">
-<thead>
-<tr>
-<th rowspan="2" scope="col">方案</th>
-<th colspan="6" scope="colgroup">单 QP 长距吞吐统计结果 (Gbps)</th>
-</tr>
-<tr>
-<th scope="col">1ms</th>
-<th scope="col">5ms</th>
-<th scope="col">10ms</th>
-<th scope="col">20ms</th>
-<th scope="col">30ms</th>
-<th scope="col">50ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="proto-row-highlight">
-<td>DCQCN</td>
-<td>2.270</td>
-<td>4.220</td>
-<td>7.280</td>
-<td>11.360</td>
-<td>12.220</td>
-<td>10.550</td>
-</tr>
-<tr>
-<td>TIMELY</td>
-<td>80.930</td>
-<td>39.320</td>
-<td>32.430</td>
-<td>28.310</td>
-<td>24.120</td>
-<td>16.370</td>
-</tr>
-<tr class="proto-row-highlight proto-row-ours">
-<td>本项目方案</td>
-<td>89.700</td>
-<td>71.970</td>
-<td>65.280</td>
-<td>56.080</td>
-<td>53.230</td>
-<td>49.340</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-<article class="proto-result-item">
-<div class="proto-table-wrap">
-<table class="proto-data-table">
-<thead>
-<tr>
-<th rowspan="2" scope="col">方案</th>
-<th colspan="6" scope="colgroup">P90 尾流完成时间统计结果 (ms)</th>
-</tr>
-<tr>
-<th scope="col">1ms</th>
-<th scope="col">5ms</th>
-<th scope="col">10ms</th>
-<th scope="col">20ms</th>
-<th scope="col">30ms</th>
-<th scope="col">50ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="proto-row-highlight">
-<td>PFC</td>
-<td>197884.12</td>
-<td>188186.465</td>
-<td>221847.829</td>
-<td>252742.218</td>
-<td>252386.193</td>
-<td>321271.176</td>
-</tr>
-<tr class="proto-row-highlight proto-row-ours">
-<td>本项目方案</td>
-<td>32819.874</td>
-<td>37599.987</td>
-<td>38285.37</td>
-<td>42911.921</td>
-<td>58811.636</td>
-<td>57882.129</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-<article class="proto-result-item">
-<div class="proto-table-wrap">
-<table class="proto-data-table">
-<thead>
-<tr>
-<th rowspan="2" scope="col">方案</th>
-<th colspan="6" scope="colgroup">All to All 吞吐统计结果 (GB)</th>
-</tr>
-<tr>
-<th scope="col">1ms</th>
-<th scope="col">5ms</th>
-<th scope="col">10ms</th>
-<th scope="col">20ms</th>
-<th scope="col">30ms</th>
-<th scope="col">50ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="proto-row-highlight">
-<td>DCQCN</td>
-<td>8.75</td>
-<td>8.44</td>
-<td>4.45</td>
-<td>4.12</td>
-<td>2.88</td>
-<td>1.77</td>
-</tr>
-<tr>
-<td>TIMELY</td>
-<td>8.50</td>
-<td>8.18</td>
-<td>4.30</td>
-<td>3.99</td>
-<td>2.77</td>
-<td>1.70</td>
-</tr>
-<tr class="proto-row-highlight proto-row-ours">
-<td>本项目方案</td>
-<td>11.00</td>
-<td>8.64</td>
-<td>5.22</td>
-<td>5.34</td>
-<td>3.97</td>
-<td>2.68</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-</div>
-</section><section class="article-section prototype-section" id="app-verify"><div class="section-heading"><span class="number">03</span><h2>应用验证</h2><small>APPLICATION VALIDATION</small></div>
-
-<div class="proto-results-list">
-<h3 class="proto-app-label">应用1：GPT-2 Large 全量微调实验</h3>
-<article class="proto-result-item proto-app-block">
-<div class="proto-app-top">
-<div class="proto-table-wrap">
-<table class="proto-data-table proto-app-figure-table">
-<thead>
-<tr>
-<th scope="col">图1 通信模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="proto-app-figure-cell">
-<img alt="三卡 All-Reduce 通信模式：反向传播阶段 NCCL All-reduce 突发流量" loading="lazy" src="assets/prototype/app1-comm-mode.png"/>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="proto-table-wrap">
-<table class="proto-data-table proto-param-table">
-<thead>
-<tr>
-<th colspan="2" scope="colgroup">表1 微调参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GPU数</td>
-<td>3</td>
-</tr>
-<tr>
-<td>并行方法</td>
-<td>DDP + FP16</td>
-</tr>
-<tr>
-<td>max_batch_size</td>
-<td>1</td>
-</tr>
-<tr>
-<td>max_length</td>
-<td>256</td>
-</tr>
-<tr>
-<td>grad_accum</td>
-<td>1</td>
-</tr>
-<tr>
-<td>max_steps</td>
-<td>30</td>
-</tr>
-<tr>
-<td>optim</td>
-<td>paged_adamw_8bit</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</article>
-<article class="proto-result-item">
-<div class="proto-table-wrap">
-<table class="proto-data-table">
-<thead>
-<tr>
-<th rowspan="2" scope="col">拥塞控制方案</th>
-<th colspan="6" scope="colgroup">Train Runtime (s)</th>
-</tr>
-<tr>
-<th scope="col">0ms</th>
-<th scope="col">5ms</th>
-<th scope="col">10ms</th>
-<th scope="col">20ms</th>
-<th scope="col">30ms</th>
-<th scope="col">50ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="proto-row-highlight">
-<td>PFC</td>
-<td>60.2</td>
-<td>114.8</td>
-<td>191.6</td>
-<td>326.4</td>
-<td>547.1</td>
-<td>1034.6</td>
-</tr>
-<tr class="proto-row-highlight proto-row-ours">
-<td>本项目方案</td>
-<td>61.9</td>
-<td>77.5</td>
-<td>84.4</td>
-<td>102.2</td>
-<td>156.4</td>
-<td>194.1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-<h3 class="proto-app-label">应用2：四节点遥感文件汇交2016年-2018年中国2米高分遥感影像数据集</h3>
-<article class="proto-result-item proto-app-block">
-<div class="proto-app-top">
-<div class="proto-table-wrap">
-<table class="proto-data-table proto-app-figure-table proto-app-figure-table-lg">
-<thead>
-<tr>
-<th scope="col">图2 仿真实验拓扑</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="proto-app-figure-cell">
-<img alt="四节点遥感文件汇交仿真实验拓扑：卫星、地面站与存储机房" loading="lazy" src="assets/prototype/app2-topology.png"/>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="proto-table-wrap">
-<table class="proto-data-table proto-param-table">
-<thead>
-<tr>
-<th colspan="2" scope="colgroup">表3 数据集信息</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据集名称</td>
-<td>2016年-2018年中国2米高分遥感影像数据集</td>
-</tr>
-<tr>
-<td>数据集来源</td>
-<td>国家对地观测科学数据中心</td>
-</tr>
-<tr>
-<td>数据量</td>
-<td>654336MB</td>
-</tr>
-<tr>
-<td>数据条目</td>
-<td>4917条</td>
-</tr>
-<tr>
-<td>公开途径</td>
-<td><a href="https://noda.ac.cn/datasharing/datasetDetails/6199242385146f1e5812b3a4" rel="noopener noreferrer" target="_blank">https://noda.ac.cn/datasharing/datasetDetails/6199242385146f1e5812b3a4</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</article>
-<article class="proto-result-item">
-<div class="proto-table-wrap">
-<table class="proto-data-table">
-<thead>
-<tr>
-<th rowspan="2" scope="col">拥塞控制方案</th>
-<th colspan="6" scope="colgroup">有效吞吐统计结果 (Gbps)</th>
-</tr>
-<tr>
-<th scope="col">0ms</th>
-<th scope="col">5ms</th>
-<th scope="col">10ms</th>
-<th scope="col">20ms</th>
-<th scope="col">30ms</th>
-<th scope="col">50ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="proto-row-highlight">
-<td>DCQCN</td>
-<td>11.39</td>
-<td>5.80</td>
-<td>5.25</td>
-<td>3.77</td>
-<td>3.47</td>
-<td>2.43</td>
-</tr>
-<tr>
-<td>TIMELY</td>
-<td>8.33</td>
-<td>8.41</td>
-<td>11.25</td>
-<td>6.26</td>
-<td>4.94</td>
-<td>6.52</td>
-</tr>
-<tr class="proto-row-highlight proto-row-ours">
-<td>本项目方案</td>
-<td>22.71</td>
-<td>13.04</td>
-<td>13.32</td>
-<td>11.21</td>
-<td>13.48</td>
-<td>10.14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-</div>
-</section></div></div></main><footer><div class="wrap"><div class="footer-grid"><section><h2>《拥塞感知的广域RDMA传输控制技术研究》</h2><p>国家重点研发计划<br>「多模态网络与通信」重点专项<br>青年科学家项目</p></section><section><h2>承担单位</h2><ul>
-<li><a href="https://www.bupt.edu.cn/" rel="noopener noreferrer" target="_blank">北京邮电大学</a></li>
-<li><a href="https://www.cuhk.edu.cn/" rel="noopener noreferrer" target="_blank">香港中文大学（深圳）</a></li>
-<li><a href="https://www.scsc.org/" rel="noopener noreferrer" target="_blank">山东省计算中心（国家超级计算济南中心）</a></li>
-</ul></section><section><h2>联系方式</h2><ul>
-<li>联系人：张乙然</li>
-<li><a href="https://maps.apple.com/?q=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%B5%B7%E6%B7%80%E5%8C%BA%E8%A5%BF%E5%9C%9F%E5%9F%8E%E8%B7%AF10%E5%8F%B7%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E9%99%A2" rel="noopener noreferrer" target="_blank">地址：北京市海淀区西土城路10号北京邮电大学计算机学院</a></li>
-<li><a href="mailto:yiranzhang@bupt.edu.cn">邮箱：yiranzhang@bupt.edu.cn</a></li>
-</ul></section></div><div class="copyright"><span>© 2024–2027 拥塞感知的广域RDMA传输控制技术研究 项目组</span><span>国家重点研发计划 · 青年科学家项目</span></div></div></footer></body></html>
+            <div class="proto-results-list">
+              <h3 class="proto-app-label">应用1：GPT-2 Large 全量微调实验</h3>
+              <article class="proto-result-item proto-app-block">
+                <div class="proto-app-top">
+                  <div class="proto-table-wrap">
+                    <table class="proto-data-table proto-app-figure-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">图1 通信模式</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="proto-app-figure-cell">
+                            <img
+                              alt="三卡 All-Reduce 通信模式：反向传播阶段 NCCL All-reduce 突发流量"
+                              loading="lazy"
+                              src="assets/prototype/app1-comm-mode.png"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="proto-table-wrap">
+                    <table class="proto-data-table proto-param-table">
+                      <thead>
+                        <tr>
+                          <th colspan="2" scope="colgroup">表1 微调参数</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>GPU数</td>
+                          <td>3</td>
+                        </tr>
+                        <tr>
+                          <td>并行方法</td>
+                          <td>DDP + FP16</td>
+                        </tr>
+                        <tr>
+                          <td>max_batch_size</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>max_length</td>
+                          <td>256</td>
+                        </tr>
+                        <tr>
+                          <td>grad_accum</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>max_steps</td>
+                          <td>30</td>
+                        </tr>
+                        <tr>
+                          <td>optim</td>
+                          <td>paged_adamw_8bit</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </article>
+              <article class="proto-result-item">
+                <div class="proto-table-wrap">
+                  <table class="proto-data-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">拥塞控制方案</th>
+                        <th colspan="6" scope="colgroup">Train Runtime (s)</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">0ms</th>
+                        <th scope="col">5ms</th>
+                        <th scope="col">10ms</th>
+                        <th scope="col">20ms</th>
+                        <th scope="col">30ms</th>
+                        <th scope="col">50ms</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="proto-row-highlight">
+                        <td>PFC</td>
+                        <td>60.2</td>
+                        <td>114.8</td>
+                        <td>191.6</td>
+                        <td>326.4</td>
+                        <td>547.1</td>
+                        <td>1034.6</td>
+                      </tr>
+                      <tr class="proto-row-highlight proto-row-ours">
+                        <td>本项目方案</td>
+                        <td>61.9</td>
+                        <td>77.5</td>
+                        <td>84.4</td>
+                        <td>102.2</td>
+                        <td>156.4</td>
+                        <td>194.1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <h3 class="proto-app-label">
+                应用2：四节点遥感文件汇交2016年-2018年中国2米高分遥感影像数据集
+              </h3>
+              <article class="proto-result-item proto-app-block">
+                <div class="proto-app-top">
+                  <div class="proto-table-wrap">
+                    <table
+                      class="proto-data-table proto-app-figure-table proto-app-figure-table-lg"
+                    >
+                      <thead>
+                        <tr>
+                          <th scope="col">图2 仿真实验拓扑</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="proto-app-figure-cell">
+                            <img
+                              alt="四节点遥感文件汇交仿真实验拓扑：卫星、地面站与存储机房"
+                              loading="lazy"
+                              src="assets/prototype/app2-topology.png"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="proto-table-wrap">
+                    <table class="proto-data-table proto-param-table">
+                      <thead>
+                        <tr>
+                          <th colspan="2" scope="colgroup">表3 数据集信息</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>数据集名称</td>
+                          <td>2016年-2018年中国2米高分遥感影像数据集</td>
+                        </tr>
+                        <tr>
+                          <td>数据集来源</td>
+                          <td>国家对地观测科学数据中心</td>
+                        </tr>
+                        <tr>
+                          <td>数据量</td>
+                          <td>654336MB</td>
+                        </tr>
+                        <tr>
+                          <td>数据条目</td>
+                          <td>4917条</td>
+                        </tr>
+                        <tr>
+                          <td>公开途径</td>
+                          <td>
+                            <a
+                              href="https://noda.ac.cn/datasharing/datasetDetails/6199242385146f1e5812b3a4"
+                              rel="noopener noreferrer"
+                              target="_blank"
+                              >https://noda.ac.cn/datasharing/datasetDetails/6199242385146f1e5812b3a4</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </article>
+              <article class="proto-result-item">
+                <div class="proto-table-wrap">
+                  <table class="proto-data-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">拥塞控制方案</th>
+                        <th colspan="6" scope="colgroup">有效吞吐统计结果 (Gbps)</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">0ms</th>
+                        <th scope="col">5ms</th>
+                        <th scope="col">10ms</th>
+                        <th scope="col">20ms</th>
+                        <th scope="col">30ms</th>
+                        <th scope="col">50ms</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="proto-row-highlight">
+                        <td>DCQCN</td>
+                        <td>11.39</td>
+                        <td>5.80</td>
+                        <td>5.25</td>
+                        <td>3.77</td>
+                        <td>3.47</td>
+                        <td>2.43</td>
+                      </tr>
+                      <tr>
+                        <td>TIMELY</td>
+                        <td>8.33</td>
+                        <td>8.41</td>
+                        <td>11.25</td>
+                        <td>6.26</td>
+                        <td>4.94</td>
+                        <td>6.52</td>
+                      </tr>
+                      <tr class="proto-row-highlight proto-row-ours">
+                        <td>本项目方案</td>
+                        <td>22.71</td>
+                        <td>13.04</td>
+                        <td>13.32</td>
+                        <td>11.21</td>
+                        <td>13.48</td>
+                        <td>10.14</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="footer-grid">
+          <section>
+            <h2>《拥塞感知的广域RDMA传输控制技术研究》</h2>
+            <p>国家重点研发计划<br />「多模态网络与通信」重点专项<br />青年科学家项目</p>
+          </section>
+          <section>
+            <h2>承担单位</h2>
+            <ul>
+              <li>
+                <a href="https://www.bupt.edu.cn/" rel="noopener noreferrer" target="_blank"
+                  >北京邮电大学</a
+                >
+              </li>
+              <li>
+                <a href="https://www.cuhk.edu.cn/" rel="noopener noreferrer" target="_blank"
+                  >香港中文大学（深圳）</a
+                >
+              </li>
+              <li>
+                <a href="https://www.scsc.org/" rel="noopener noreferrer" target="_blank"
+                  >山东省计算中心（国家超级计算济南中心）</a
+                >
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>联系方式</h2>
+            <ul>
+              <li>联系人：张乙然</li>
+              <li>
+                <a
+                  href="https://maps.apple.com/?q=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%B5%B7%E6%B7%80%E5%8C%BA%E8%A5%BF%E5%9C%9F%E5%9F%8E%E8%B7%AF10%E5%8F%B7%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E9%99%A2"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >地址：北京市海淀区西土城路10号北京邮电大学计算机学院</a
+                >
+              </li>
+              <li><a href="mailto:yiranzhang@bupt.edu.cn">邮箱：yiranzhang@bupt.edu.cn</a></li>
+            </ul>
+          </section>
+        </div>
+        <div class="copyright">
+          <span>© 2024–2027 拥塞感知的广域RDMA传输控制技术研究 项目组</span
+          ><span>国家重点研发计划 · 青年科学家项目</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
