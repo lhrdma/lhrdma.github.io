@@ -1,3 +1,7 @@
+# lhrdma.github.io
+
+lhrdma project website
+
 # 项目网站统一视觉预览
 
 直接打开 `index.html`，或在工作区运行 `python -m http.server 8765 --bind 127.0.0.1` 后访问 `http://127.0.0.1:8765/optimized-site/`。
