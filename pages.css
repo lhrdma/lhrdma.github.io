@@ -14,42 +14,8 @@
 .figure figcaption {
   text-align: center;
 }
-.milestone--completed {
-  border-top-color: #24856b;
-}
-.milestone--completed::before {
-  background: #24856b;
-}
-.milestone--completed h3 {
-  color: #176c55;
-}
-.milestone--current {
-  border-top: 2px solid #2267ab;
-}
-.milestone--current::before {
-  width: 10px;
-  height: 10px;
-  top: -6px;
-  background: #2267ab;
-  box-shadow: 0 0 0 4px #dceaf8;
-}
-.milestone--current h3,
-.milestone--current time {
-  color: #18558f;
-}
-.milestone--current h3 {
-  font-weight: 700;
-}
-.milestone--upcoming {
-  border-top: 1px dashed #a7b0bb;
-}
-.milestone--upcoming::before {
-  background: white;
-  border: 2px solid #8b96a3;
-}
-.milestone--upcoming h3,
-.milestone--upcoming time {
-  color: #6a7786;
+.milestone {
+  border-top-color: var(--navy);
 }
 .page-intro {
   padding: 42px 0 34px;
@@ -139,6 +105,111 @@
 .team-student-icon {
   display: none;
 }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 16px;
+}
+.team-grid .team-participant {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+.team-logo-block {
+  display: grid;
+  place-items: center;
+  min-height: 76px;
+  margin-bottom: 3px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--white);
+}
+.team-grid .team-participant-logo {
+  width: min(195px, 100%);
+  height: 58px;
+  margin: 0;
+  object-position: center;
+}
+.team-role {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 650;
+}
+.team-grid h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.45;
+}
+.team-grid .team-participant p,
+.team-summary p {
+  margin: 0;
+  text-align: start;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.team-grid .team-participant .team-platform {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.team-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  background: var(--paper);
+  color: var(--navy);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.team-summary strong {
+  font-size: 23px;
+  font-variant-numeric: tabular-nums;
+}
+.team-summary small {
+  display: block;
+  color: var(--muted);
+}
+.team-profile-head {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.team-profile-head img {
+  display: block;
+  width: 72px;
+  height: 88px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.team-profile-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-block: 4px;
+  color: var(--accent);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.team-profile-link:hover {
+  color: var(--navy);
+}
 .innovation-entry {
   padding: 0 0 28px;
   margin-bottom: 24px;
@@ -202,21 +273,121 @@
   color: var(--muted);
 }
 .news-archive {
-  padding-block: 38px 75px;
+  display: grid;
+  gap: 16px;
+  padding-block: 28px 55px;
 }
-.news-archive .news-item {
-  grid-template-columns: 130px 1fr 170px;
+.news-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 36%);
+  align-items: start;
+  gap: 16px 30px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 2px 5px #163b650d;
 }
-.news-archive .news-item time {
-  font-size: 18px;
-  font-weight: 500;
-  white-space: nowrap;
+.news-card-copy:only-child {
+  grid-column: 1 / -1;
 }
-.news-archive .news-item:first-child {
-  border-top: 0;
+.news-card time {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 650;
 }
-.news-archive .news-item h2 {
+.news-card h2 {
+  font-size: 19px;
+  line-height: 1.45;
+}
+.news-card p {
+  margin: 9px 0 0;
   color: var(--ink);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.news-card p a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.news-card-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 12px;
+}
+.news-card-media {
+  margin: 0;
+}
+.news-card-media button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--white);
+  cursor: zoom-in;
+}
+.news-card-media button:hover {
+  border-color: var(--accent);
+}
+.news-card-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+.news-card-media figcaption {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.news-lightbox {
+  max-width: min(94vw, 1200px);
+  max-height: 94dvh;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+}
+.news-lightbox::backdrop {
+  background: rgb(9 20 38 / 85%);
+}
+.news-lightbox form {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 8px;
+}
+.news-lightbox button {
+  min-height: 40px;
+  padding: 4px 16px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--paper);
+  color: var(--navy);
+  font: inherit;
+  cursor: pointer;
+}
+.news-lightbox figure {
+  margin: 0;
+  text-align: center;
+}
+.news-lightbox img {
+  display: block;
+  width: min(86vw, 1120px);
+  height: auto;
+  max-height: 72dvh;
+  margin-inline: auto;
+  object-fit: contain;
+}
+.news-lightbox figcaption {
+  margin-top: 8px;
+  font-size: 14px;
 }
 .prototype-note {
   font-size: 12px;
@@ -560,11 +731,12 @@
   .news-archive {
     padding-block: 15px 45px;
   }
-  .news-archive .news-item {
-    grid-template-columns: 95px 1fr;
+  .news-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px;
   }
-  .news-archive .news-item time {
-    font-size: 16px;
+  .news-card h2 {
+    font-size: 17px;
   }
   .proto-dashboard {
     grid-template-columns: 1fr;
