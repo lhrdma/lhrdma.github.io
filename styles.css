@@ -53,6 +53,9 @@ button {
   width: min(var(--width), calc(100% - 64px));
   margin-inline: auto;
 }
+.overview-page {
+  --width: 1360px;
+}
 .skip {
   position: fixed;
   top: -100px;
@@ -154,6 +157,9 @@ nav a[aria-current='page']:after {
   align-items: center;
   gap: 45px;
   padding-block: 66px 48px;
+}
+.hero-copy:only-child {
+  grid-column: 1 / -1;
 }
 .eyebrow {
   font-size: 12px;
@@ -324,6 +330,9 @@ h2 {
   text-align: justify;
   line-height: 2.05;
 }
+.overview-body .article-section > p {
+  text-indent: 2em;
+}
 .figure {
   margin: 28px 0 0;
   border: 1px solid var(--line);
@@ -371,6 +380,26 @@ h2 {
   font-weight: 500;
   color: var(--navy);
   margin: 5px 0;
+}
+#milestones .section-heading h2 {
+  font-size: 21px;
+}
+#milestones .timeline {
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(124px, 1fr);
+  padding-top: 6px;
+  overflow-x: auto;
+}
+#milestones .milestone h3 {
+  font-size: 14px;
+  line-height: 1.5;
+}
+#milestones .milestone small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
 }
 .news-banner {
   border-block: 1px solid var(--line);
