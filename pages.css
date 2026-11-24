@@ -1,4 +1,7 @@
 /* Inner pages share the homepage's colors, chapter headings and reading grid. */
+.research-content-page {
+  --width: 1360px;
+}
 .hero .hero-inner {
   padding-block: 30px 26px;
 }

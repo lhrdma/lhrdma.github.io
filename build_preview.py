@@ -16,7 +16,7 @@ title = soup.title.get_text(strip=True)
 subtitle = soup.select_one('.logo-subtext').get_text(strip=True)
 
 def header(active):
-    links = [('index.html', '项目概况'), ('news.html', '最新新闻'), ('team.html', '项目团队'), ('innovation.html', '创新成果'), ('materials.html', '资料汇编'), ('prototype.html', '原型系统')]
+    links = [('index.html', '项目概况'), ('news.html', '最新新闻'), ('team.html', '项目团队'), ('innovation.html', '创新成果'), ('materials.html', '资料汇编')]
     nav = ''.join(f'<a href="{url}"'+(' aria-current="page"' if label == active else '')+f'>{label}</a>' for url, label in links)
     return f'''<a class="skip" href="#main">跳至正文</a><header class="masthead"><div class="wrap brand-row"><a class="brand" href="index.html"><img src="assets/NSFC.png" alt="国家自然科学基金委员会标志" width="62" height="62"><div><strong>{title}</strong><small>{subtitle}</small></div></a><div class="brand-note">NATIONAL KEY R&amp;D PROGRAM OF CHINA<br>YOUNG SCIENTIST PROJECT</div><button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation">菜单</button></div><div class="nav-row" id="primary-navigation"><nav class="wrap" aria-label="主导航">{nav}</nav></div></header>'''
 
