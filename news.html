@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content='国家重点研发计划「多模态网络与通信」重点专项（青年科学家项目）'
+      content="负载感知的广域 RDMA 路由选择技术研究：项目节点、研究成果和学术交流。"
     />
-    <title>最新新闻 · 负载感知的广域 RDMA 路由选择技术研究</title>
+    <title>项目进展 · 负载感知的广域 RDMA 路由选择技术研究</title>
     <link rel="icon" href="assets/NSFC.png" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="pages.css" />
     <script src="main.js" defer></script>
+    <script src="news.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">跳至正文</a>
@@ -30,7 +31,7 @@
       </div>
       <div class="nav-row" id="primary-navigation">
         <nav class="wrap" aria-label="主导航">
-          <a href="index.html">项目概况</a><a href="news.html" aria-current="page">最新新闻</a
+          <a href="index.html">项目概况</a><a href="news.html" aria-current="page">项目进展</a
           ><a href="team.html">项目团队</a><a href="innovation.html">创新成果</a
           ><a href="materials.html">资料汇编</a><a href="prototype.html">原型系统</a>
         </nav>
@@ -39,182 +40,258 @@
     <main id="main">
       <section class="page-intro">
         <div class="wrap">
-          <div class="eyebrow">NEWS &amp; UPDATES</div>
-          <h1>最新新闻</h1>
-          <p>项目进展 / 学术交流</p>
+          <div class="eyebrow">PROJECT PROGRESS</div>
+          <h1>项目进展</h1>
+          <p>项目节点、研究成果与学术交流，按时间从早到晚排列。点击图片可放大查看。</p>
         </div>
       </section>
       <div class="wrap news-archive" id="news-archive">
         <article class="news-card">
-          <time datetime="2026-08">2026 年 8 月</time>
-          <div>
-            <h2>分布式在网程序验证研究成果 Procurator 在 ACM SIGCOMM 2026 发表</h2>
-            <p>
-              厦门大学、北京邮电大学等单位的研究人员合作提出 Procurator，用于验证分布式在网程序的正确性。该框架将多个交换机程序之间的交互纳入验证范围，帮助在部署前发现问题。
-            </p>
-            <p><a href="https://conferences.sigcomm.org/sigcomm/2026/program/papers/">查看 ACM SIGCOMM 2026 官方议程</a></p>
+          <div class="news-card-copy">
+            <time datetime="2024-12">2024 年 12 月</time>
+            <h2>项目进入执行期</h2>
+            <p>根据项目任务书，项目执行期为 2024 年 12 月至 2027 年 11 月，由北京邮电大学牵头，厦门大学和中国联合网络通信集团有限公司共同参与。</p>
+            <p><a href="index.html#milestones">查看项目进度时间轴</a></p>
           </div>
-          <figure class="news-card-media">
-            <a href="assets/news/procurator-framework.png">
-              <img
-                src="assets/news/procurator-framework.png"
-                width="798"
-                height="363"
-                alt="Procurator 框架，展示在网程序建模与后端验证流程"
-                loading="lazy"
-              />
-            </a>
-            <figcaption>Procurator 验证框架</figcaption>
-          </figure>
         </article>
         <article class="news-card">
-          <time datetime="2026-07">2026 年 6–7 月</time>
-          <div>
-            <h2>少包流量分类研究 POC-FPC 发表于 IWQoS 2026</h2>
-            <p>团队面向丢包、乱序等动态网络条件，提出少包流量分类方法 POC-FPC。该方法从同一流量的多种局部观测中提取一致特征，提高流量模式识别的稳定性。</p>
-            <p><a href="https://ieeexplore.ieee.org/document/11661262">查看 IEEE 论文</a></p>
+          <div class="news-card-copy">
+            <time datetime="2025-08-04">2025 年 8 月 4 日</time>
+            <h2>数据中心小流丢包恢复研究亮相 ICCCN 2025</h2>
+            <p>团队提出链路本地重传机制 LLR-CoLoR，用于缓解拥塞丢包对时延敏感小流的影响。论文列入在日本东京举行的 ICCCN 2025 技术议程。</p>
+            <p><a href="https://www.icccn.org/icccn25/wp-content/uploads/2025/ICCCN2025-Technical-Program-final.pdf">查看 ICCCN 2025 官方议程</a></p>
           </div>
-          <figure class="news-card-media">
-            <a href="assets/news/poc-fpc-experiment.png">
-              <img
-                src="assets/news/poc-fpc-experiment.png"
-                width="626"
-                height="366"
-                alt="POC-FPC 与其他分类方法的跨视图一致性实验对比"
-                loading="lazy"
-              />
-            </a>
-            <figcaption>POC-FPC · 流量识别稳定性实验</figcaption>
-          </figure>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 ICCCN 2025 现场照片">
+                <img src="assets/news/icccn-2025.jpeg" width="572" height="429" alt="项目成员在 ICCCN 2025 会场" loading="lazy" />
+              </button>
+              <figcaption>ICCCN 2025 · 东京会议现场</figcaption>
+            </figure>
+          </div>
         </article>
         <article class="news-card">
-          <time datetime="2026-06-11">2026 年 6 月</time>
-          <div>
-            <h2>项目完成中期第三方检测</h2>
-            <p>
-              威尔克通信实验室于 6 月 11 日出具检测报告。项目送检的 V1.0 版本通过了全部 4 个测试用例。检测覆盖多任务并发负载检测，并在仿真环境中评估了差异化路由的网络吞吐率、平均流完成时间和路径选择正确率。
-            </p>
-          </div>
-          <figure class="news-card-media">
-            <a href="assets/news/parallel-detection-results.png">
-              <img
-                src="assets/news/parallel-detection-results.png"
-                width="1200"
-                height="771"
-                alt="第三方检测报告中的流数量与流大小分布并发检测准确率对比图"
-                loading="lazy"
-              />
-            </a>
-            <figcaption>中期第三方检测 · 并发检测准确率</figcaption>
-          </figure>
-        </article>
-        <article class="news-card">
-          <time datetime="2026-04-28">2026 年 4 月 28 日</time>
-          <div>
-            <h2>广域多路径路由研究成果 LCMP 在 ACM EuroSys 2026 发表</h2>
-            <p>
-              项目团队提出了面向跨数据中心 RDMA 网络的分布式多路径路由方法 LCMP。该方法结合链路容量、时延和实时拥塞信息，为广域 RDMA 流量选择路径。
-            </p>
-            <p><a href="https://2026.eurosys.org/papers.html">查看 EuroSys 2026 官方论文列表</a></p>
-          </div>
-          <figure class="news-card-media">
-            <a href="assets/news/eurosys-lcmp.jpeg">
-              <img
-                src="assets/news/eurosys-lcmp.jpeg"
-                width="580"
-                height="435"
-                alt="EuroSys 2026 会场正在介绍 LCMP 广域多路径路由研究"
-                loading="lazy"
-              />
-            </a>
-            <figcaption>EuroSys 2026 · LCMP 论文报告</figcaption>
-          </figure>
-        </article>
-        <article class="news-card">
-          <time datetime="2026-04-27">2026 年 4 月 27 日</time>
-          <div>
-            <h2>动态流喷洒研究 DFS 亮相 EuroMLSys 2026</h2>
-            <p>针对 AI 训练集群中时延敏感流与后台 RDMA 大流共存的情况，团队提出 DFS 动态流喷洒机制。它利用接收端对报文乱序的容忍额度调整多路径分发，减少拥塞并控制乱序。</p>
-            <p><a href="https://euromlsys.eu/">查看 EuroMLSys 2026 官方议程</a></p>
-          </div>
-          <figure class="news-card-media">
-            <a href="assets/news/dfs-architecture.png">
-              <img
-                src="assets/news/dfs-architecture.png"
-                width="946"
-                height="772"
-                alt="DFS 系统架构，展示链路状态感知、乱序控制和动态流喷洒"
-                loading="lazy"
-              />
-            </a>
-            <figcaption>DFS · 动态流喷洒系统架构</figcaption>
-          </figure>
-        </article>
-        <article class="news-card">
-          <time datetime="2025-09-25">2025 年 9 月 25 日</time>
-          <div>
-            <h2>模型训练集群路由系统 MORS 在 IEEE ICNP 2025 报告</h2>
-            <p>团队在韩国首尔举行的 IEEE ICNP 2025 上报告 MORS。该研究利用模型训练流量的周期性，依据链路利用率和时延的时间序列评估候选路径。</p>
-            <p><a href="https://icnp25.cs.ucr.edu/program.html">查看 IEEE ICNP 2025 官方议程</a></p>
-          </div>
-          <figure class="news-card-media">
-            <a href="assets/news/icnp-mors.jpeg">
-              <img
-                src="assets/news/icnp-mors.jpeg"
-                width="612"
-                height="459"
-                alt="IEEE ICNP 2025 会场的 MORS 论文报告"
-                loading="lazy"
-              />
-            </a>
-            <figcaption>IEEE ICNP 2025 · MORS 论文报告</figcaption>
-          </figure>
-        </article>
-        <article class="news-card news-card--text">
-          <time datetime="2025-09-23">2025 年 9 月 23 日</time>
-          <div>
-            <h2>厦门大学团队发表自适应频率估计研究 SieveSketch</h2>
-            <p>SieveSketch 通过自适应调整计数器范围和细粒度计数，提高不同流量分布下的频率估计精度。论文发表于 Proceedings of the ACM on Management of Data。</p>
-            <p><a href="https://doi.org/10.1145/3749182">查看 ACM 论文</a></p>
-          </div>
-        </article>
-        <article class="news-card news-card--text">
-          <time datetime="2025-08-25">2025 年 8 月 25 日</time>
-          <div>
-            <h2>项目成员王昭宁当选 3GPP SA5 副主席</h2>
-            <p>中国联通项目成员王昭宁在 3GPP SA5 工作组第 162 次会议上当选副主席。SA5 负责移动通信网络管理、编排与计费等方向的标准化工作。</p>
-            <p><a href="https://www.3gpp.org/images/newsletters/3GPP_Highlights_Issue_11_FLIPBOOK.pdf">查看 3GPP 官方选举简报</a></p>
-          </div>
-        </article>
-        <article class="news-card news-card--text">
-          <time datetime="2025-08-06">2025 年 8 月 6 日</time>
-          <div>
+          <div class="news-card-copy">
+            <time datetime="2025-08-06">2025 年 8 月 6 日</time>
             <h2>跨层协同研究成果 LBOR 发表于 APNet 2025 论文集</h2>
             <p>厦门大学、中国联通等单位的研究人员合作提出光网络故障恢复系统 LBOR，通过协同进行路径选择和波长分配，研究如何提高大规模光网络故障恢复的效率。</p>
             <p><a href="https://dspace.mit.edu/entities/publication/67067352-62d6-4e80-a072-d7bd0f44f042">查看论文正式版本</a></p>
           </div>
         </article>
         <article class="news-card">
-          <time datetime="2025-08-04">2025 年 8 月 4 日</time>
-          <div>
-            <h2>数据中心小流丢包恢复研究亮相 ICCCN 2025</h2>
-            <p>团队提出链路本地重传机制 LLR-CoLoR，用于缓解拥塞丢包对时延敏感小流的影响。论文列入在日本东京举行的 ICCCN 2025 技术议程。</p>
-            <p><a href="https://www.icccn.org/icccn25/wp-content/uploads/2025/ICCCN2025-Technical-Program-final.pdf">查看 ICCCN 2025 官方议程</a></p>
+          <div class="news-card-copy">
+            <time datetime="2025-08-25">2025 年 8 月 25 日</time>
+            <h2>项目成员王昭宁当选 3GPP SA5 副主席</h2>
+            <p>中国联通项目成员王昭宁在 3GPP SA5 工作组第 162 次会议上当选副主席。SA5 负责移动通信网络管理、编排与计费等方向的标准化工作。</p>
+            <p><a href="https://www.3gpp.org/dynareport?code=vote-results&amp;voteid=1176">查看 3GPP 官方选举结果</a></p>
           </div>
-          <figure class="news-card-media">
-            <a href="assets/news/icccn-2025.jpeg">
-              <img
-                src="assets/news/icccn-2025.jpeg"
-                width="572"
-                height="429"
-                alt="项目成员在 ICCCN 2025 会场"
-                loading="lazy"
-              />
-            </a>
-            <figcaption>ICCCN 2025 · 东京会议现场</figcaption>
-          </figure>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2025-09-12">2025 年 9 月 12–14 日</time>
+            <h2>项目团队参加第三届 CCF 中国网络大会</h2>
+            <p>项目团队参加了在沈阳举行的 ChinaNet 2025。大会围绕「智联生态，数创未来」主题，组织网络技术与产业发展相关的交流活动。</p>
+            <p><a href="https://ccf.org.cn/chinanet2025">查看大会官网</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 ChinaNet 2025 现场照片">
+                <img src="assets/news/chinanet-2025.jpeg" width="673" height="898" alt="ChinaNet 2025 会场报告现场" loading="lazy" />
+              </button>
+              <figcaption>ChinaNet 2025 · 沈阳会议现场</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2025-09-23">2025 年 9 月 23 日</time>
+            <h2>厦门大学团队发表自适应频率估计研究 SieveSketch</h2>
+            <p>SieveSketch 通过自适应调整计数器范围和细粒度计数，提高不同流量分布下的频率估计精度。论文发表于 Proceedings of the ACM on Management of Data。</p>
+            <p><a href="https://doi.org/10.1145/3749182">查看 ACM 论文</a></p>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2025-09-25">2025 年 9 月 25 日</time>
+            <h2>模型训练集群路由系统 MORS 在 IEEE ICNP 2025 报告</h2>
+            <p>团队在韩国首尔举行的 IEEE ICNP 2025 上报告 MORS。该研究利用模型训练流量的周期性，依据链路利用率和时延的时间序列评估候选路径。</p>
+            <p>同届会议的研讨会论文集还收录了团队面向跨数据中心网络的亚往返时延拥塞控制研究 <a href="https://ieeexplore.ieee.org/document/11192335">SRCC</a>。</p>
+            <p><a href="https://icnp25.cs.ucr.edu/program.html">查看 IEEE ICNP 2025 官方议程</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 MORS 论文报告照片">
+                <img src="assets/news/icnp-mors.jpeg" width="612" height="459" alt="IEEE ICNP 2025 会场的 MORS 论文报告" loading="lazy" />
+              </button>
+              <figcaption>IEEE ICNP 2025 · MORS 论文报告</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2025-10-23">2025 年 10 月 23–25 日</time>
+            <h2>项目团队参加 2025 中国计算机大会</h2>
+            <p>项目团队参加了在哈尔滨举行的 CNCC 2025。大会主题为「数智赋能，无限可能」，设置了新型计算与网络架构等方向的专题论坛。</p>
+            <p><a href="https://ccf.org.cn/cncc2025">查看大会官网</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 CNCC 2025 合影">
+                <img src="assets/news/cncc-2025-group.jpeg" width="1080" height="720" alt="CNCC 2025 参会人员合影" loading="lazy" />
+              </button>
+              <figcaption>CNCC 2025 · 参会人员合影</figcaption>
+            </figure>
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 CNCC 2025 论坛照片">
+                <img src="assets/news/cncc-2025-session.jpeg" width="1702" height="1276" alt="CNCC 2025 专题论坛现场" loading="lazy" />
+              </button>
+              <figcaption>CNCC 2025 · 专题论坛现场</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2025-12-14">2025 年 12 月 14–18 日</time>
+            <h2>项目团队参加 IEEE ICPADS 2025</h2>
+            <p>项目团队参加了在合肥举行的第 31 届 IEEE 并行与分布式系统国际会议。</p>
+            <p><a href="http://www.ubicomp.org/pipermail/announcements_ubicomp.org/2025-August/018814.html">查看会议通知</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 IEEE ICPADS 2025 合影">
+                <img src="assets/news/icpads-2025.jpeg" width="1500" height="1125" alt="IEEE ICPADS 2025 会议现场合影" loading="lazy" />
+              </button>
+              <figcaption>IEEE ICPADS 2025 · 合肥会议现场</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-04-27">2026 年 4 月 27 日</time>
+            <h2>动态流喷洒研究 DFS 亮相 EuroMLSys 2026</h2>
+            <p>针对 AI 训练集群中时延敏感流与后台 RDMA 大流共存的情况，团队提出 DFS 动态流喷洒机制。它利用接收端对报文乱序的容忍额度调整多路径分发，减少拥塞并控制乱序。</p>
+            <p><a href="https://euromlsys.eu/">查看 EuroMLSys 2026 官方议程</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 DFS 系统架构图">
+                <img src="assets/news/dfs-architecture.png" width="946" height="772" alt="DFS 系统架构，展示链路状态感知、乱序控制和动态流喷洒" loading="lazy" />
+              </button>
+              <figcaption>DFS · 动态流喷洒系统架构</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-04-28">2026 年 4 月 28 日</time>
+            <h2>广域多路径路由研究成果 LCMP 在 ACM EuroSys 2026 发表</h2>
+            <p>项目团队提出了面向跨数据中心 RDMA 网络的分布式多路径路由方法 LCMP。该方法结合链路容量、时延和实时拥塞信息，为广域 RDMA 流量选择路径。</p>
+            <p><a href="https://2026.eurosys.org/papers.html">查看 EuroSys 2026 官方论文列表</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 LCMP 论文报告照片">
+                <img src="assets/news/eurosys-lcmp.jpeg" width="580" height="435" alt="EuroSys 2026 会场正在介绍 LCMP 广域多路径路由研究" loading="lazy" />
+              </button>
+              <figcaption>EuroSys 2026 · LCMP 论文报告</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-05-04">2026 年 5 月 4–6 日</time>
+            <h2>项目团队参加 USENIX NSDI 2026</h2>
+            <p>项目团队参加了在美国华盛顿州伦顿举行的第 23 届 USENIX 网络系统设计与实现研讨会。会议聚焦网络和分布式系统的设计、实现与评估。</p>
+            <p><a href="https://www.usenix.org/conference/nsdi26">查看会议官网</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 NSDI 2026 现场照片">
+                <img src="assets/news/nsdi-2026.jpeg" width="4096" height="3072" alt="NSDI 2026 会场讲台" loading="lazy" />
+              </button>
+              <figcaption>NSDI 2026 · 会议现场</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-05-30">2026 年 5 月 30–31 日</time>
+            <h2>项目团队参加第 30 届 ChinaSys 研讨会</h2>
+            <p>项目团队参加了在西北大学长安校区举办的第 30 届中国计算机系统研讨会。研讨会涵盖计算机网络、分布式系统等研究方向。</p>
+            <p><a href="https://chinasys-2026spring.nwu.edu.cn/">查看会议官网</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 ChinaSys 2026 现场照片">
+                <img src="assets/news/chinasys-2026.jpeg" width="1500" height="1125" alt="项目成员在第 30 届中国计算机系统研讨会展板前" loading="lazy" />
+              </button>
+              <figcaption>ChinaSys 2026 · 西安研讨会现场</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-06-11">2026 年 6 月 11 日</time>
+            <h2>项目完成中期第三方检测</h2>
+            <p>威尔克通信实验室出具检测报告。项目送检的 V1.0 版本通过全部 4 个测试用例，覆盖多任务并发负载检测，并在仿真环境中评估差异化路由的网络吞吐率、平均流完成时间和路径选择正确率。</p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大中期第三方检测准确率图">
+                <img src="assets/news/parallel-detection-results.png" width="1200" height="771" alt="第三方检测报告中的流数量与流大小分布并发检测准确率对比图" loading="lazy" />
+              </button>
+              <figcaption>中期第三方检测 · 并发检测准确率</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-06-22">2026 年 6 月 22 日</time>
+            <h2>项目形成中期执行情况报告</h2>
+            <p>项目中期执行情况报告落款为 6 月 22 日。报告汇总了负载检测、路由决策和跨层协同传输系统的阶段成果，并记录了第三方检测进展。</p>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-06-29">2026 年 6 月 29 日–7 月 2 日</time>
+            <h2>少包流量分类研究 POC-FPC 发表于 IWQoS 2026</h2>
+            <p>团队面向丢包、乱序等动态网络条件，提出少包流量分类方法 POC-FPC。该方法从同一流量的多种局部观测中提取一致特征，提高流量模式识别的稳定性。</p>
+            <p><a href="https://ieeexplore.ieee.org/document/11661262">查看 IEEE 论文</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 POC-FPC 实验对比图">
+                <img src="assets/news/poc-fpc-experiment.png" width="626" height="366" alt="POC-FPC 与其他分类方法的跨视图一致性实验对比" loading="lazy" />
+              </button>
+              <figcaption>POC-FPC · 流量识别稳定性实验</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-copy">
+            <time datetime="2026-08">2026 年 8 月</time>
+            <h2>分布式在网程序验证研究成果 Procurator 在 ACM SIGCOMM 2026 发表</h2>
+            <p>厦门大学、北京邮电大学等单位的研究人员合作提出 Procurator，用于验证分布式在网程序的正确性。该框架将多个交换机程序之间的交互纳入验证范围，帮助在部署前发现问题。</p>
+            <p><a href="https://conferences.sigcomm.org/sigcomm/2026/program/papers/">查看 ACM SIGCOMM 2026 官方议程</a></p>
+          </div>
+          <div class="news-card-images">
+            <figure class="news-card-media">
+              <button type="button" aria-haspopup="dialog" aria-label="放大 Procurator 验证框架图">
+                <img src="assets/news/procurator-framework.png" width="798" height="363" alt="Procurator 框架，展示在网程序建模与后端验证流程" loading="lazy" />
+              </button>
+              <figcaption>Procurator 验证框架</figcaption>
+            </figure>
+          </div>
         </article>
       </div>
+      <dialog class="news-lightbox" aria-label="图片预览" aria-describedby="news-lightbox-caption">
+        <form method="dialog">
+          <button type="submit" autofocus>关闭</button>
+        </form>
+        <figure>
+          <figcaption id="news-lightbox-caption"></figcaption>
+        </figure>
+      </dialog>
     </main>
     <footer>
       <div class="wrap">
