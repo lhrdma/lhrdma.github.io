@@ -14,8 +14,18 @@
 .figure figcaption {
   text-align: center;
 }
-.milestone {
-  border-top-color: var(--navy);
+#milestones .milestone {
+  border-top-color: #9aa3ad;
+}
+#milestones .milestone::before {
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  top: -5.5px;
+}
+#milestones .milestone--upcoming::before {
+  border: 2px solid #9aa3ad;
+  background: var(--white);
 }
 .page-intro {
   padding: 42px 0 34px;
